@@ -15,6 +15,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Link,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -22,6 +23,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons'
+import { cursorTo } from 'readline'
+
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
@@ -50,12 +53,15 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text>
+          <Link href='/'>
+            <Text
+              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+              fontFamily={'heading'}
+              color={useColorModeValue('gray.800', 'white')}
+              _hover={{ cursor: 'pointer' }}>
+              Logo
+            </Text>
+          </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -278,7 +284,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Leaderboard',
-    href: '#',
+    href: '/leaderboard',
   },
   {
     label: 'About Us',

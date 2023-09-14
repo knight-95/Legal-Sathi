@@ -7,6 +7,9 @@ import Login from "./Pages/Login";
 import RegistrationForm from "./Pages/RegistrationForm";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
+import Leaderboard from "./Components/Leaderboard";
+import ExpertAreaCard from "./Components/Cards/ExpertAreaCard";
+import AnimatedCardCarousel from "./Components/AnimatedCardCarousel";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -17,9 +20,10 @@ export const App = () => (
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/signup" element={<Signup />} />
-        {/* fd */}
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
       <Footer />
+      <ExpertAreaCard category="Criminal Cases"/>
     </Router>
   </ChakraProvider>
 );
