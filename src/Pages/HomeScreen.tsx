@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { Box } from "@chakra-ui/react";
 import CaptionCarousel from "../Components/Carousel";
@@ -14,9 +15,7 @@ import ProfileCards from "../Components/Cards/ProfileCards";
 const HomeScreen = () => {
   return (
     <>
-      <Navbar />
       <CaptionCarousel />
-
       <FlexRow hrAlign="space-between" paddingLeft="1.5rem">
         {ourServices.map((val, index) => (
           <ServicesCards
