@@ -16,6 +16,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   Link,
+  Image,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -54,13 +55,16 @@ export default function Navbar() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link href='/'>
-            <Text
+            {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
               color={useColorModeValue('gray.800', 'white')}
               _hover={{ cursor: 'pointer' }}>
-              Logo
-            </Text>
+                Logo
+            </Text> */}
+
+            <Image src='https://gateway.lighthouse.storage/ipfs/QmQG7AxAXiqGvgtkZBpFXSe3gtUykKc3zmYa67SMBvLZ61' width="10rem" />
+
           </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>

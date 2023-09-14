@@ -10,7 +10,7 @@ import {
   VisuallyHidden,
   Input,
   IconButton,
-  // useColorModeValue,
+  Image,
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
@@ -82,9 +82,9 @@ export default function Footer() {
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-              {/* <Logo color={useColorModeValue('gray.700', 'white')} /> */}
+            <Image src='https://gateway.lighthouse.storage/ipfs/QmQG7AxAXiqGvgtkZBpFXSe3gtUykKc3zmYa67SMBvLZ61' width="12rem" height="4rem" />
             </Box>
-            <Text fontSize={'sm'}>© 2022 Chakra Templates. All rights reserved</Text>
+            <Text fontSize={'sm'}>© 2023 Legal Saathi. All rights reserved</Text>
             <Stack direction={'row'} spacing={6}>
               <SocialButton label={'Twitter'} href={'#'}>
                 <FaTwitter />
@@ -130,7 +130,7 @@ export default function Footer() {
               Privacy Policy
             </Box>
             <Box as="a" href={'#'}>
-              Satus
+              Status
             </Box>
           </Stack>
           <Stack align={'flex-start'}>
@@ -138,7 +138,7 @@ export default function Footer() {
             <Stack direction={'row'}>
               <Input
                 placeholder={'Your email address'}
-                // bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+                bg='#e8ebea'
                 border={0}
                 _focus={{
                   bg: 'whiteAlpha.300',

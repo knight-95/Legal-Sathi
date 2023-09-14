@@ -28,7 +28,7 @@ const HomeScreen = () => {
           />
         ))}
       </FlexRow>
-          <ProfileCards/>
+          {/* <ProfileCards/> */}
       {/* <Login />
       <Signup />
       <RegistrationForm /> */}
