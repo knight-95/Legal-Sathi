@@ -31,7 +31,7 @@ const HomeScreen = () => {
       {/* <Login />
       <Signup />
       <RegistrationForm /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
