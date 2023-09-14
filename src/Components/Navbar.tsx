@@ -277,6 +277,10 @@ const NAV_ITEMS: Array<NavItem> = [
     href: '#',
   },
   {
+    label: 'Leaderboard',
+    href: '#',
+  },
+  {
     label: 'About Us',
     href: '#',
   },

@@ -24,7 +24,7 @@ type Props = {
   descriptionFontSize?: string;
 };
 
-export default function Cards({
+export default function ServicesCards({
   bgGrid,
   index,
   title,
@@ -46,7 +46,8 @@ export default function Cards({
         rounded={"lg"}
         p={6}
         overflow={"hidden"}
-        marginRight="1.5rem"
+        marginRight="0.5rem"
+        marginLeft="0.5rem"
       >
         <Stack>
           <Text
