@@ -18,7 +18,6 @@ import {
 
 type Props = {
   index?: string;
-
   title?: string;
   description?: string;
   onClick?: any;
@@ -79,17 +78,15 @@ export default function ProfileCards({
         alt="Starbucks"
       ></Image>
 
-      <Flex
-      marginTop="2rem"
-      justifyContent="flex-end"
-      paddingBottom="2rem"
-      >
-        <Button colorScheme="green" variant="outline" marginRight="1.5rem">
-          Call Now
-        </Button>
-        <Button colorScheme="blue" variant="outline" marginRight="1.5rem">
-          Video Call
-        </Button>
+      <Flex marginTop="2rem" justifyContent="flex-end" paddingBottom="2rem">
+        <Box justifyContent="space-between">
+          <Button colorScheme="green" variant="outline">
+            Call Now
+          </Button>
+          <Button colorScheme="blue" variant="outline">
+            Video Call
+          </Button>
+        </Box>
       </Flex>
     </Card>
   );
