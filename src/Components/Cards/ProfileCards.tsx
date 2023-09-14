@@ -88,7 +88,7 @@ export default function ProfileCards({
             </Flex>
           </Box>
         </FlexColumn>
-        <FlexColumn></FlexColumn>
+        <FlexColumn>Abc</FlexColumn>
       </FlexRow>
 
       <Box justifyContent="space-between" padding="1.25rem">

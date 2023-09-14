@@ -16,12 +16,12 @@ import {
 
 type Props = {
     index?: string;
-    category: string;
+    category?: string;
     description?: string;
     onClick?: any;
     buttonText?: string;
     bgGrid?: string;
-    height?: string;
+    imgUrl?: string;
     headingFontSize?: string;
     descriptionFontSize?: string;
 };
@@ -36,13 +36,14 @@ export default function ExpertAreaCard({
     descriptionFontSize,
     onClick,
     buttonText,
-    height,
+    imgUrl,
 }: Props) {
     return (
         <Center py={6}>
             <Box
-                maxW={'270px'}
-                w={'15%'}
+                // maxW={'270px'}
+                // w={'15%'}
+                mx={'2rem'}
                 bg={useColorModeValue('white', 'gray.800')}
                 boxShadow={'2xl'}
                 rounded={'md'}

@@ -8,8 +8,8 @@ import RegistrationForm from "./Pages/RegistrationForm";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
-import ExpertAreaCard from "./Components/Cards/ExpertAreaCard";
-import AnimatedCardCarousel from "./Components/AnimatedCardCarousel";
+import MarqueeSection from "./Components/MarqueeSection";
+
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -22,8 +22,8 @@ export const App = () => (
         <Route path="/signup" element={<Signup />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
+      <MarqueeSection speed={30} />
       <Footer />
-      <ExpertAreaCard category="Criminal Cases"/>
     </Router>
   </ChakraProvider>
 );
