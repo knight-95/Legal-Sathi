@@ -13,7 +13,7 @@ import {
   Image,
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaTwitter, FaWhatsapp, FaYoutube } from 'react-icons/fa'
 import { BiMailSend } from 'react-icons/bi'
 
 const Logo = (props: any) => {
@@ -64,7 +64,7 @@ const SocialButton = ({
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
   return (
-    <Text fontWeight={'500'} fontSize= {'lg'} mb={2}>
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
       {children}
     </Text>
   )
@@ -73,27 +73,33 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export default function Footer() {
   return (
     <Box
-      // bg={useColorModeValue('gray.50', 'gray.900')}
-      // color={useColorModeValue('gray.700', 'gray.200')}
-      >
+    // bg={useColorModeValue('gray.50', 'gray.900')}
+    // color={useColorModeValue('gray.700', 'gray.200')}
+    >
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
           templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-            <Image src='https://gateway.lighthouse.storage/ipfs/QmQG7AxAXiqGvgtkZBpFXSe3gtUykKc3zmYa67SMBvLZ61' width="12rem" height="4rem" />
+              <Image src='https://gateway.lighthouse.storage/ipfs/QmaJZ5z7JTeYWNWqT28m5xvrZK1jYzA9UcqQXgrYp14T4E' width="16rem" height="4.25rem" />
             </Box>
             <Text fontSize={'sm'}>© 2023 Legal Saathi. All rights reserved</Text>
             <Stack direction={'row'} spacing={6}>
               <SocialButton label={'Twitter'} href={'#'}>
-                <FaTwitter />
+                <FaTwitter color='#1D9BF0' size={25} />
               </SocialButton>
               <SocialButton label={'YouTube'} href={'#'}>
-                <FaYoutube />
+                <FaYoutube color='red' size={25} />
               </SocialButton>
               <SocialButton label={'Instagram'} href={'#'}>
-                <FaInstagram />
+                <FaFacebook color='blue' size={25} />
+              </SocialButton>
+              <SocialButton label={'Instagram'} href={'#'}>
+                <FaInstagram color='#bc2a8d' size={25} />
+              </SocialButton>
+              <SocialButton label={'Instagram'} href={'#'}>
+                <FaWhatsapp color='green' size={25} />
               </SocialButton>
             </Stack>
           </Stack>
@@ -102,9 +108,7 @@ export default function Footer() {
             <Box as="a" href={'#'}>
               About us
             </Box>
-            <Box as="a" href={'#'}>
-              Blog
-            </Box>
+
             <Box as="a" href={'#'}>
               Contact us
             </Box>
@@ -129,16 +133,15 @@ export default function Footer() {
             <Box as="a" href={'#'}>
               Privacy Policy
             </Box>
-            <Box as="a" href={'#'}>
-              Status
-            </Box>
+
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Stay up to date</ListHeader>
             <Stack direction={'row'}>
               <Input
                 placeholder={'Your email address'}
-                bg='#e8ebea'
+                // bg='#e8ebea'
+                backgroundColor={'rgb(242,245,253)'}
                 border={0}
                 _focus={{
                   bg: 'whiteAlpha.300',
@@ -147,8 +150,8 @@ export default function Footer() {
               <IconButton
                 // bg={useColorModeValue('green.400', 'green.800')}
                 // color={useColorModeValue('white', 'gray.800')}
-                _hover={{
-                  bg: 'green.600',
+                _focus={{
+                  bg: 'whiteAlpha.300',
                 }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}

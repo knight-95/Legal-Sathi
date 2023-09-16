@@ -9,6 +9,8 @@ import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
 import MarqueeSection from "./Components/MarqueeSection";
+import ProfileCards from "./Components/Cards/ProfileCards";
+import ServicesCards from "./Components/Cards/ServicesCards";
 
 
 export const App = () => (
@@ -22,8 +24,10 @@ export const App = () => (
         <Route path="/signup" element={<Signup />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
-      <MarqueeSection speed={30} />
+      {/* <MarqueeSection speed={30} /> */}
       <Footer />
+      {/* <ProfileCards /> */}
+      {/* <ServicesCards/> */}
     </Router>
   </ChakraProvider>
 );
