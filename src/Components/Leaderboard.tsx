@@ -1,49 +1,63 @@
 import React from 'react';
 import {
-    Avatar, Box, Link, Table, Tbody, Td, Text, Th, Thead, Tr, Flex,
+    Avatar, Box, Link, Table, Tbody, Td, Text, Th, Thead, Tr, Flex, Tag,
 } from '@chakra-ui/react';
 import { FaCoins } from 'react-icons/fa';
-import leaderImg from '../assets/leadersImg.png'
 
 const candidates = [
     {
         id: 1,
         name: 'John Doe',
+        specialization: [
+            'Cyber Crime', 'Family Issues', 'Criminal'
+        ],
         score: 95,
         rank: 1,
-        profilePicture: 'https://example.com/john-doe.jpg',
+        profilePicture: 'https://gateway.lighthouse.storage/ipfs/QmPsurChGSg8Pia8KuxytMGZJ1SDYAzJDrf7EyJEiE89LX',
         profileLink: '/profile/john-doe',
     },
     {
         id: 2,
         name: 'Dawid',
+        specialization: [
+            'Cyber Crime', 'Criminal',
+        ],
         score: 35,
         rank: 2,
-        profilePicture: 'https://example.com/john-doe.jpg',
+        profilePicture: 'https://gateway.lighthouse.storage/ipfs/QmPsurChGSg8Pia8KuxytMGZJ1SDYAzJDrf7EyJEiE89LX',
         profileLink: '/profile/john-doe',
     },
     {
         id: 3,
         name: 'Michale',
+        specialization: [
+            'Cyber Crime',
+        ],
         score: 85,
         rank: 3,
-        profilePicture: 'https://example.com/john-doe.jpg',
+        profilePicture: 'https://gateway.lighthouse.storage/ipfs/QmPsurChGSg8Pia8KuxytMGZJ1SDYAzJDrf7EyJEiE89LX',
         profileLink: '/profile/john-doe',
     },
     {
         id: 4,
         name: 'Green',
+        specialization: [
+            'Cyber Crime', 'Property Disputes'
+        ],
         score: 115,
         rank: 4,
-        profilePicture: 'https://example.com/john-doe.jpg',
+        profilePicture: 'https://gateway.lighthouse.storage/ipfs/QmPsurChGSg8Pia8KuxytMGZJ1SDYAzJDrf7EyJEiE89LX',
         profileLink: '/profile/john-doe',
     },
     {
         id: 5,
         name: 'Smith',
+        specialization: [
+            'Cyber Crime'
+        ],
         score: 55,
         rank: 5,
-        profilePicture: 'https://example.com/john-doe.jpg',
+        profilePicture: 'https://gateway.lighthouse.storage/ipfs/QmPsurChGSg8Pia8KuxytMGZJ1SDYAzJDrf7EyJEiE89LX',
         profileLink: '/profile/john-doe',
     },
 
@@ -72,7 +86,8 @@ const Leaderboard = () => {
                         <Th width="10%">Rank</Th>
                         <Th width="15%">Profile</Th>
                         <Th width="20%">Name</Th>
-                        <Th width="15%">
+                        <Th width="25%">Specialization</Th>
+                        <Th width="10%">
                             <Flex align="center">
                                 Score
                             </Flex>
@@ -90,6 +105,13 @@ const Leaderboard = () => {
                                 <Link href={candidate.profileLink} fontWeight="bold">
                                     {candidate.name}
                                 </Link>
+                            </Td>
+                            <Td>
+                                {candidate.specialization.map((specialization, index) => (
+                                    <Tag key={index} margin="0.2rem" background="#a0d4eb" fontSize="0.7rem" style={{ cursor: 'pointer' }}>
+                                        {specialization}
+                                    </Tag>
+                                ))}
                             </Td>
                             <Td fontWeight="bold">
                                 <Flex align="center">

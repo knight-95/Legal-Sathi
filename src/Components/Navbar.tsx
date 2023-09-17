@@ -279,8 +279,8 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Services',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
+        label: 'Document Review and Consult',
+        subLabel: 'Review your documents by best lawyers',
         href: '#',
       },
       {
