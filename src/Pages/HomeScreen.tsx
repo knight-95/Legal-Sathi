@@ -12,7 +12,6 @@ import Footer from "../Components/Footer";
 import ServicesCards from "../Components/Cards/ServicesCards";
 import ProfileCards from "../Components/Cards/ProfileCards";
 
-
 const HomeScreen = () => {
   return (
     <>
@@ -28,7 +27,8 @@ const HomeScreen = () => {
           />
         ))}
       </FlexRow>
-          {/* <ProfileCards/> */}
+
+      {/* <ProfileCards/> */}
       {/* <Login />
       <Signup />
       <RegistrationForm /> */}

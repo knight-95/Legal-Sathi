@@ -11,7 +11,7 @@ import Leaderboard from "./Components/Leaderboard";
 import MarqueeSection from "./Components/MarqueeSection";
 import ProfileCards from "./Components/Cards/ProfileCards";
 import ServicesCards from "./Components/Cards/ServicesCards";
-
+import TalkToLawyer from "./Pages/TalkToLawyer";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -23,6 +23,7 @@ export const App = () => (
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/talktolawyer" element={<TalkToLawyer />} />
       </Routes>
       {/* <MarqueeSection speed={30} /> */}
       <Footer />

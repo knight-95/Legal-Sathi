@@ -49,7 +49,8 @@ export default function ProfileCards({
 }: Props) {
   return (
     <Box
-      marginLeft="1.5rem"
+      // marginLeft="1.5rem"
+      // marginTop="1rem"
       bg={useColorModeValue("white", "gray.900")}
       boxShadow={"2xl"}
       rounded={"lg"}
