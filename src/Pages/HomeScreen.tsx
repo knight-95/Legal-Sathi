@@ -10,7 +10,7 @@ import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
 import Footer from "../Components/Footer";
 import ServicesCards from "../Components/Cards/ServicesCards";
-import ProfileCards from "../Components/Cards/ProfileCards";
+import ProfileCards from "../Components/Cards/ProfileCard";
 
 const HomeScreen = () => {
   return (

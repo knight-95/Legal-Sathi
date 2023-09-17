@@ -9,7 +9,7 @@ import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
 import MarqueeSection from "./Components/MarqueeSection";
-import ProfileCards from "./Components/Cards/ProfileCards";
+import ProfileCards from "./Components/Cards/ProfileCard";
 import ServicesCards from "./Components/Cards/ServicesCards";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 
