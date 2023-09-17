@@ -48,6 +48,7 @@ export default function ServicesCards({
         overflow={"hidden"}
         marginRight="0.5rem"
         marginLeft="0.5rem"
+        // _hover={height="2rem"}
       >
         <Stack>
           <Text

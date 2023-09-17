@@ -7,6 +7,11 @@ import Login from "./Pages/Login";
 import RegistrationForm from "./Pages/RegistrationForm";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
+import Leaderboard from "./Components/Leaderboard";
+import MarqueeSection from "./Components/MarqueeSection";
+import ProfileCards from "./Components/Cards/ProfileCard";
+import ServicesCards from "./Components/Cards/ServicesCards";
+import TalkToLawyer from "./Pages/TalkToLawyer";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -17,9 +22,13 @@ export const App = () => (
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/signup" element={<Signup />} />
-        {/* fd */}
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/talktolawyer" element={<TalkToLawyer />} />
       </Routes>
+      {/* <MarqueeSection speed={30} /> */}
       <Footer />
+      {/* <ProfileCards /> */}
+      {/* <ServicesCards/> */}
     </Router>
   </ChakraProvider>
 );

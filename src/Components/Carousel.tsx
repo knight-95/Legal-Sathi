@@ -16,6 +16,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 import Slider from "react-slick";
 
+
 // Settings for the slider
 const settings = {
   dots: true,
@@ -43,22 +44,21 @@ export default function CaptionCarousel() {
   // This can be static or loaded from a server
   const cards = [
     {
-      title: "Design Projects 1",
+      title: "Online Legal Consultation Anytime Anywhere",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        "https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+      image:"https://gateway.lighthouse.storage/ipfs/QmZENsbfetsXk226hTUmuN7eJ67PvE553a2n7mvb8Xbv1Q",
     },
     {
-      title: "Design Projects 2",
+      title: "Document Drafting by Expert Layers",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        "https://cdn.dnaindia.com/sites/default/files/styles/full/public/2019/04/16/813736-homeloan-istock-041719.jpg",
+        "https://gateway.lighthouse.storage/ipfs/QmPduG4strRAbZTRTBFUo6JHiQjbeANeNsyXn9jb9RFxyx",
     },
     {
-      title: "Design Projects 3",
+      title: "Buy Property with Confidence",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        "https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+        "https://gateway.lighthouse.storage/ipfs/QmZrSubPWmZkUYacCzXzBmrwvoRfs5eGPJYMwFYgzhKCxx",
     },
   ];
 
@@ -111,11 +111,12 @@ export default function CaptionCarousel() {
         {cards.map((card, index) => (
           <Box
             key={index}
-            height={"6xl"}
+            // height={"6xl"}
+            width="xl"
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
-            backgroundSize="auto 100%"
+            backgroundSize="cover"
             backgroundImage={`url(${card.image})`}
           >
             {/* This is the block you need to change, to customize the caption */}
@@ -128,10 +129,10 @@ export default function CaptionCarousel() {
                 top="50%"
                 transform="translate(0, -50%)"
               >
-                <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }} color="white">
                   {card.title}
                 </Heading>
-                <Text fontSize={{ base: "md", lg: "lg" }} color="GrayText">
+                <Text fontSize={{ base: "md", lg: "lg" }} color="white">
                   {card.text}
                 </Text>
               </Stack>

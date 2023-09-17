@@ -15,6 +15,8 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Link,
+  Image,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -22,6 +24,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons'
+import { cursorTo } from 'readline'
+
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
@@ -50,12 +54,18 @@ export default function Navbar() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text>
+          <Link href='/'>
+            {/* <Text
+              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+              fontFamily={'heading'}
+              color={useColorModeValue('gray.800', 'white')}
+              _hover={{ cursor: 'pointer' }}>
+                Logo
+            </Text> */}
+
+            <Image src='https://gateway.lighthouse.storage/ipfs/QmaJZ5z7JTeYWNWqT28m5xvrZK1jYzA9UcqQXgrYp14T4E' width="10rem" marginTop="4px"/>
+
+          </Link>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -67,7 +77,13 @@ export default function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'/login'}>
+          <Button as={'a'} fontSize={'md'} fontWeight="bold" variant={'link'} href={'/login'} border='2px' width='4rem'
+            _hover={{
+              background: 'linear-gradient(100.07deg, #2A85FF 0.39%, #2448C7 73.45%)',
+              color: 'white',
+              fontWeight: '600',
+              border: '2px solid linear-gradient(100.07deg, #2A85FF 0.39%, #2448C7 73.45%)'
+            }}>
             Login
           </Button>
           <Button
@@ -75,12 +91,13 @@ export default function Navbar() {
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
-            color={'white'}
+            color="white"
             bg={'pink.400'}
             href={'/register'}
             _hover={{
-              bg: 'pink.300',
-            }}>
+              bg: '#171a53',
+            }}
+            background={'linear-gradient(100.07deg, #2A85FF 0.39%, #2448C7 73.45%)'}>
             Lawyers Click Here
           </Button>
         </Stack>
@@ -99,7 +116,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue('white', 'gray.800')
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={4} alignItems="center">
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -108,7 +125,7 @@ const DesktopNav = () => {
                 as="a"
                 p={2}
                 href={navItem.href ?? '#'}
-                fontSize={'sm'}
+                fontSize={'md'}
                 fontWeight={500}
                 color={linkColor}
                 _hover={{
@@ -244,25 +261,26 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Talk To Lawyer',
-    children: [
-      {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
-      },
-      {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
-      },
-    ],
+    // children: [
+    //   {
+    //     label: 'Explore Design Work',
+    //     subLabel: 'Trending Design to inspire you',
+    //     href: '#',
+    //   },
+    //   {
+    //     label: 'New & Noteworthy',
+    //     subLabel: 'Up-and-coming Designers',
+    //     href: '#',
+    //   },
+    // ],
+    href: '/talktolawyer'
   },
   {
     label: 'Services',
     children: [
       {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
+        label: 'Document Review and Consult',
+        subLabel: 'Review your documents by best lawyers',
         href: '#',
       },
       {
@@ -278,7 +296,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: 'Leaderboard',
-    href: '#',
+    href: '/leaderboard',
   },
   {
     label: 'About Us',
