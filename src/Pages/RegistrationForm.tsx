@@ -10,11 +10,7 @@ import {
   InputRightElement,
   InputGroup,
   Select,
-  VStack,
-  Spacer,
-  Divider,
   Box,
-  Center,
 } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";

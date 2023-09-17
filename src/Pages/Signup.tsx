@@ -14,13 +14,37 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link
+  Link,
+  Select
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type FormValues = {
+  "first-name": string;
+  "last-name": string;
+  email: string;
+  password: string;
+  userType: string;
+};
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    handleSubmit,
+    reset,
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (values) => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        alert(JSON.stringify(values));
+        resolve();
+        reset();
+      }, 3000);
+    });
+  };
 
   return (
     <Flex
@@ -41,60 +65,74 @@ export default function Signup() {
           boxShadow={"lg"}
           p={8}
         >
-          <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl id="lastName">
-                  <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              </Box>
-            </HStack>
-            <FormControl id="email" isRequired>
-              <FormLabel>Email address</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password" isRequired>
-              <FormLabel>Password</FormLabel>
-              <InputGroup>
-                <Input type={showPassword ? "text" : "password"} />
-                <InputRightElement h={"full"}>
-                  <Button
-                    variant={"ghost"}
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }
-                  >
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormControl>
-            <Stack spacing={10} pt={2}>
-              <Button
-                loadingText="Submitting"
-                size="lg"
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500"
-                }}
-              >
-                Sign up
-              </Button>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack spacing={4}>
+              <HStack>
+                <Box>
+                  <FormControl isRequired>
+                    <FormLabel htmlFor="first-name">First Name</FormLabel>
+                    <Input id="firstName" type="text" name="first-name" />
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl>
+                    <FormLabel htmlFor="last-name">Last Name</FormLabel>
+                    <Input id="lastName" type="text" name="last-name" />
+                  </FormControl>
+                </Box>
+              </HStack>
+              <FormControl isRequired>
+                <FormLabel htmlFor="email">Email address</FormLabel>
+                <Input id="email" type="email" name="email" />
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <InputGroup>
+                  <Input id="password" type={showPassword ? "text" : "password"} name="password" />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+              <FormControl isRequired>
+                <FormLabel htmlFor="gender">User Type</FormLabel>
+                <Select
+                  id="gender"
+                  placeholder="Select option"
+                  size="sm"
+                >
+                  <option value="Client">Client</option>
+                  <option value="Admin">Admin</option>
+                </Select>
+              </FormControl>
+              <Stack spacing={10} pt={2}>
+                <Button
+                  loadingText="Submitting"
+                  size="lg"
+                  bg={"blue.400"}
+                  color={"white"}
+                  _hover={{
+                    bg: "blue.500"
+                  }}
+                  type="submit"
+                >
+                  Sign up
+                </Button>
+              </Stack>
+              <Stack pt={6}>
+                <Text align={"center"}>
+                  Already a user? <Link color={"blue.400"} href="/login">Login</Link>
+                </Text>
+              </Stack>
             </Stack>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user? <Link color={"blue.400"} href="/login">Login</Link>
-              </Text>
-            </Stack>
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>

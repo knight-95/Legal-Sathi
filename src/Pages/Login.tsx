@@ -28,7 +28,7 @@ export default function Login() {
   } = useForm();
 
   function onSubmit(values: Record<string, string>) {
-    return new Promise<void>((resolve) => { // Provide type annotation for the promise return type
+    return new Promise<void>((resolve) => { 
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
         resolve();
@@ -59,12 +59,16 @@ export default function Login() {
             <Stack spacing={4}>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email"
+                id="email"
+                name="email" />
               </FormControl>
-              <FormControl id="password" isRequired>
+              <FormControl isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? "text" : "password"} />
+                  <Input type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password" />
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}
