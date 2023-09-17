@@ -3,6 +3,7 @@ import {
     Avatar, Box, Link, Table, Tbody, Td, Text, Th, Thead, Tr, Flex, Tag,
 } from '@chakra-ui/react';
 import { FaCoins } from 'react-icons/fa';
+import { style } from '../styles/StyledConstants';
 
 const candidates = [
     {
@@ -82,12 +83,12 @@ const Leaderboard = () => {
                 width="100%"
             >
                 <Thead>
-                    <Tr>
-                        <Th width="10%">Rank</Th>
+                    <Tr background="#b0d6f1" color="black">
+                        <Th width="2%">Rank</Th>
                         <Th width="15%">Profile</Th>
-                        <Th width="20%">Name</Th>
-                        <Th width="25%">Specialization</Th>
-                        <Th width="10%">
+                        <Th width="15%">Name</Th>
+                        <Th width="40%">Specialization</Th>
+                        <Th width="5%">
                             <Flex align="center">
                                 Score
                             </Flex>
