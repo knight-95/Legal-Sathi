@@ -1,5 +1,4 @@
-"use client";
-
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Box,
@@ -16,27 +15,47 @@ import {
   InputRightElement
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
+type FormValues = {
+  email: string;
+  password: string;
+};
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    register,
   } = useForm();
 
-  function onSubmit(values: Record<string, string>) {
-    return new Promise<void>((resolve) => { 
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        resolve();
+  // Function to handle form submission
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    try {
+      const response = await fetch("/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        // Handle successful login here, e.g., store JWT token in localStorage
+        alert("Login successful!");
         reset();
-      }, 3000);
-    });
-  }
-  
+      } else {
+        // Handle login error here, e.g., display an error message
+        alert("Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Handle other errors, e.g., network issues
+      alert("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <Flex
       minH={"100vh"}
@@ -59,16 +78,20 @@ export default function Login() {
             <Stack spacing={4}>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email"
-                id="email"
-                name="email" />
+                <Input
+                  type="email"
+                  id="email"
+                  {...register("email")}
+                />
               </FormControl>
               <FormControl isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? "text" : "password"}
-                  id="password"
-                  name="password" />
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    {...register("password")}
+                  />
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}
@@ -83,6 +106,7 @@ export default function Login() {
               </FormControl>
               <Stack spacing={10} pt={2}>
                 <Button
+                  isLoading={isSubmitting}
                   loadingText="Logging In"
                   size="lg"
                   bg={"blue.400"}
