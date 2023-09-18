@@ -44,14 +44,36 @@ export default function RegistrationForm() {
 
   const handleClick = () => setShowPassword(!showPassword);
 
-  const onSubmit: SubmitHandler<FormValues> = (values) => {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        resolve();
+  // const onSubmit: SubmitHandler<FormValues> = (values) => {
+  //   return new Promise<void>((resolve) => {
+  //     setTimeout(() => {
+  //       alert(JSON.stringify(values, null, 2));
+  //       resolve();
+  //       reset();
+  //     }, 3000);
+  //   });
+  // };
+  const onSubmit: SubmitHandler<FormValues> = async (values) => {
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
         reset();
-      }, 3000);
-    });
+      } else {
+        alert("Registration failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while registering.");
+    }
   };
 
   return (

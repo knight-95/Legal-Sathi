@@ -11,11 +11,14 @@ import FlexColumn from "../_ui/flex/FlexColumn";
 import Footer from "../Components/Footer";
 import ServicesCards from "../Components/Cards/ServicesCards";
 import ProfileCards from "../Components/Cards/ProfileCard";
+import ExpertAreaCard from "../Components/Cards/ExpertAreaCard";
+import MarqueeSection from "../Components/MarqueeSection";
 
 const HomeScreen = () => {
   return (
     <>
       <CaptionCarousel />
+      <MarqueeSection />
       <FlexRow hrAlign="space-between" paddingLeft="1.5rem">
         {ourServices.map((val, index) => (
           <ServicesCards
@@ -33,6 +36,7 @@ const HomeScreen = () => {
       <Signup />
       <RegistrationForm /> */}
       {/* <Footer /> */}
+      {/* <ExpertAreaCard /> */}
     </>
   );
 };
