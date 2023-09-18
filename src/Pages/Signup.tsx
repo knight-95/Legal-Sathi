@@ -36,14 +36,28 @@ export default function Signup() {
     reset,
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (values) => {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values));
-        resolve();
+  const onSubmit: SubmitHandler<FormValues> = async (values) => {
+    try {
+      // Send a POST request to your backend signup route
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(data.message); // Display a success message
         reset();
-      }, 3000);
-    });
+      } else {
+        throw new Error('Signup failed');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      alert('Signup failed. Please try again later.');
+    }
   };
 
   return (

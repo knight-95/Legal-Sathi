@@ -21,7 +21,7 @@ export default function MarqueeSection(props: any) {
   return (
     <>
       <Box
-        style={{ marginTop: "30px", padding: "0% 6%" }}
+        style={{ marginTop: "30px", padding: "" }}
         sx={{
           "@media screen and (max-width: 768px)": {
             display: "none",

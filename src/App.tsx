@@ -25,10 +25,7 @@ export const App = () => (
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
       </Routes>
-      {/* <MarqueeSection speed={30} /> */}
       <Footer />
-      {/* <ProfileCards /> */}
-      {/* <ServicesCards/> */}
     </Router>
   </ChakraProvider>
 );
