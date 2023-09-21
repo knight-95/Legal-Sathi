@@ -95,7 +95,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
         ))}
       </Box>
       <Center marginTop="0.5rem">
-        <Divider orientation="horizontal" width="80%" />{" "}
+        <Divider orientation="horizontal" width="80%" />
       </Center>
 
       <Flex

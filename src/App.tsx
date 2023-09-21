@@ -8,10 +8,11 @@ import RegistrationForm from "./Pages/RegistrationForm";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
-import MarqueeSection from "./Components/MarqueeSection";
-import ProfileCards from "./Components/Cards/ProfileCard";
-import ServicesCards from "./Components/Cards/ServicesCards";
 import TalkToLawyer from "./Pages/TalkToLawyer";
+import LawyersProfile from "./Pages/LawyersProfile";
+import StateCityDropdown from "./Components/StateCityDropdown";
+import RatingAndReviewCard from "./Components/Cards/RatingAndReviewCard";
+import AdminDashboard from "./Pages/AdminDashboard";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -24,8 +25,19 @@ export const App = () => (
         <Route path="/signup" element={<Signup />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
+        <Route path="/lawyersprofile" element={<LawyersProfile />} />
+        <Route path="/admindashboard" element={<AdminDashboard />} />
       </Routes>
+
+      {/* <RatingAndReviewCard
+        userName="John Doe"
+        userProfilePhoto="https://example.com/profile.jpg"
+        userRating={5}
+        reviewContent="This is a sample review content."
+      /> */}
       <Footer />
+
+      {/* <StateCityDropdown /> */}
     </Router>
   </ChakraProvider>
 );

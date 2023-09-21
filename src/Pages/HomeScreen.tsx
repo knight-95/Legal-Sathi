@@ -13,11 +13,13 @@ import ServicesCards from "../Components/Cards/ServicesCards";
 import ProfileCards from "../Components/Cards/ProfileCard";
 import ExpertAreaCard from "../Components/Cards/ExpertAreaCard";
 import MarqueeSection from "../Components/MarqueeSection";
+import StateCityDropdown from "../Components/StateCityDropdown";
 
 const HomeScreen = () => {
   return (
     <>
       <CaptionCarousel />
+      <StateCityDropdown/>
       <MarqueeSection />
       <FlexRow hrAlign="space-between" paddingLeft="1.5rem">
         {ourServices.map((val, index) => (
@@ -30,7 +32,6 @@ const HomeScreen = () => {
           />
         ))}
       </FlexRow>
-
       {/* <ProfileCards/> */}
       {/* <Login />
       <Signup />
