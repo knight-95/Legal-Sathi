@@ -10,14 +10,20 @@ import {
   InputRightElement,
   InputGroup,
   Select,
+  VStack,
+  Spacer,
+  Divider,
   Box,
+  Center,
+  Textarea,
 } from "@chakra-ui/react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
+// import StateCityDropdown from "../Components/StateCitydropdown";
+import ChipInput from "../Components/ChipInput";
 
-type FormValues = {
+interface FormValues {
   "first-name": string;
   "last-name": string;
   email: string;
@@ -25,12 +31,12 @@ type FormValues = {
   city: string;
   state: string;
   "bar-council-Id": string;
-  Id: string;
-  year: string;
   gender: string;
   "bar-council-file": File;
-  "aadhar-card-required": File;
-};
+  specializations: string[];
+  photo: File;
+  description: string;
+}
 
 export default function RegistrationForm() {
   const {
@@ -41,18 +47,10 @@ export default function RegistrationForm() {
   } = useForm<FormValues>();
 
   const [showPassword, setShowPassword] = useState(false);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
 
   const handleClick = () => setShowPassword(!showPassword);
 
-  // const onSubmit: SubmitHandler<FormValues> = (values) => {
-  //   return new Promise<void>((resolve) => {
-  //     setTimeout(() => {
-  //       alert(JSON.stringify(values, null, 2));
-  //       resolve();
-  //       reset();
-  //     }, 3000);
-  //   });
-  // };
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     try {
       const response = await fetch("/api/register", {
@@ -77,261 +75,242 @@ export default function RegistrationForm() {
   };
 
   return (
-    <Flex backgroundColor={'rgb(242,245,253)'} justifyContent='center' padding="4rem">
-      <Box p={4} backgroundColor={'white'} width={'55%'} borderRadius="20px" >
-        <Text fontSize="3rem" fontWeight="bold" align="center" marginBottom="1rem">
-          Create a New Account
-        </Text>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FlexRow vrAlign="space-between" hrAlign="space-evenly">
-            <FlexColumn width="30%" height="70vh" hrAlign="space-evenly" vrAlign="flex-start">
-              <FormControl isRequired>
-                <FormLabel htmlFor="first-name">First name</FormLabel>
+    <VStack spacing={4} align="stretch" p={4}>
+      <Text fontSize="3rem" fontWeight="bold" color="teal" align="center">
+        Create a New Account
+      </Text>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FlexRow vrAlign="space-between" hrAlign="space-evenly">
+          <FlexColumn width="30%" height="70vh" hrAlign="space-evenly">
+            <FormControl isRequired>
+              <FormLabel htmlFor="first-name">First name</FormLabel>
+              <Input
+                id="first-name"
+                placeholder="First name"
+                {...register("first-name", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["first-name"] && errors["first-name"].message}
+              </FormErrorMessage>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel htmlFor="last-name">Last name</FormLabel>
+              <Input
+                id="last-name"
+                placeholder="Last name"
+                {...register("last-name", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["last-name"] && errors["last-name"].message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Input
+                id="email"
+                placeholder="abc@gmail.com"
+                {...register("email", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["email"] && errors["email"].message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="password">Password</FormLabel>
+              <InputGroup size="sm">
                 <Input
-                  borderRadius="4px"
-                  id="first-name"
-                  placeholder="First Name"
-                  {...register("first-name", {
+                  id="password"
+                  placeholder="Enter Password"
+                  type={showPassword ? "text" : "password"}
+                  {...register("password", {
                     required: "This is required",
                     minLength: {
                       value: 4,
                       message: "Minimum length should be 4",
                     },
                   })}
-
                   size="sm"
                 />
-                <FormErrorMessage>
-                  {errors["first-name"] && errors["first-name"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="last-name">Last name</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="last-name"
-                  placeholder="Last Name"
-                  {...register("last-name", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
+                <InputRightElement marginRight="1rem">
+                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    {showPassword ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>
+                {errors["password"] && errors["password"].message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="city">City</FormLabel>
+              <Input
+                id="city"
+                placeholder="City"
+                {...register("city", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["city"] && errors["city"].message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel htmlFor="state">State</FormLabel>
+              <Input
+                id="state"
+                placeholder="State"
+                {...register("state", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["state"] && errors["state"].message}
+              </FormErrorMessage>
+            </FormControl>
+          </FlexColumn>
 
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["last-name"] && errors["last-name"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="email">Email</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="email"
-                  placeholder="abc@gmail.com"
-                  {...register("email", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
+          <FlexColumn width="30%" height="70vh" hrAlign="space-evenly">
+            <FormControl isRequired>
+              <FormLabel htmlFor="bar-council-Id">Bar Council ID</FormLabel>
+              <Input
+                id="bar-council-Id"
+                placeholder="Bar Council ID"
+                {...register("bar-council-Id", {
+                  required: "This is required",
+                  minLength: {
+                    value: 10,
+                    message: "Minimum length should be 10",
+                  },
+                })}
+                color="teal"
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["bar-council-Id"] && errors["bar-council-Id"].message}
+              </FormErrorMessage>
+            </FormControl>
 
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["email"] && errors["email"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="password">Password</FormLabel>
-                <InputGroup size="sm">
-                  <Input
-                    borderRadius="4px"
-                    id="password"
-                    placeholder="Enter Password"
-                    type={showPassword ? "text" : "password"}
-                    {...register("password", {
-                      required: "This is required",
-                      minLength: {
-                        value: 4,
-                        message: "Minimum length should be 4",
-                      },
-                    })}
-                    size="sm"
-                  />
-                  <InputRightElement marginRight="1rem" height="full">
-                    <Button
-                      variant={"ghost"}
-                      onClick={() =>
-                        setShowPassword((showPassword) => !showPassword)
-                      }
-                    >
-                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-                <FormErrorMessage>
-                  {errors["password"] && errors["password"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="city">City</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="city"
-                  placeholder="City"
-                  {...register("city", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
+            <FormControl isRequired>
+              <FormLabel htmlFor="gender">Gender</FormLabel>
+              <Select
+                id="gender"
+                placeholder="Select option"
+                {...register("gender", {
+                  required: "This is required",
+                })}
+                color="teal"
+                size="sm"
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </Select>
+              <FormErrorMessage>
+                {errors["gender"] && errors["gender"].message}
+              </FormErrorMessage>
+            </FormControl>
+            
+            <FormControl isRequired>
+              <FormLabel>Bar Council Certificate or ID Card</FormLabel>
+              <Input type="file" accept="*" />
+              <FormErrorMessage>
+                {errors["bar-council-file"] &&
+                  errors["bar-council-file"].message}
+              </FormErrorMessage>
+            </FormControl>
 
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["city"] && errors["city"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="state">State</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="state"
-                  placeholder="State"
-                  {...register("state", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
+            <FormControl isRequired>
+              <FormLabel htmlFor="specializations">Specializations</FormLabel>
+              <ChipInput
+                label=""
+                name="specializations"
+                placeholder="Enter Specializations"
+                // register={register}
+                register={register("specializations", {
+                  required: "This is required",
+                })}
+              // errors={errors}
+              // setValue={setValue} // Ensure you have `setValue` and `getValues` in your scope
+              // getValues={getValues}
+              />
+            </FormControl>
 
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["state"] && errors["state"].message}
-                </FormErrorMessage>
-              </FormControl>
-            </FlexColumn>
+            <FormControl isRequired>
+              <FormLabel>Photo</FormLabel>
+              <Input type="file" accept="*" />
+              <FormErrorMessage>
+                {errors["photo"] && errors["photo"].message}
+              </FormErrorMessage>
+            </FormControl>
+          </FlexColumn>
+        </FlexRow>
+        <FlexRow>
+          <FlexColumn>
+            <FormControl id="description" mt={4} width="40%" isRequired>
+              <FormLabel>Description</FormLabel>
+              <Textarea
+                id="description"
+                placeholder="description"
+                {...register("description", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                size="md"
+              />
+            </FormControl>
 
-            <FlexColumn width="30%" height="70vh" hrAlign="space-evenly" vrAlign="flex-start">
-              <FormControl isRequired>
-                <FormLabel htmlFor="bar-council-Id">Bar Council ID</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="bar-council-Id"
-                  placeholder="Bar Council ID"
-                  {...register("bar-council-Id", {
-                    required: "This is required",
-                    minLength: {
-                      value: 10,
-                      message: "Minimum length should be 10",
-                    },
-                  })}
-
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["bar-council-Id"] && errors["bar-council-Id"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="Id">ID No.</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="Id"
-                  placeholder="ID No."
-                  {...register("Id", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
-
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["Id"] && errors["Id"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="year">Year</FormLabel>
-                <Input
-                  borderRadius="4px"
-                  id="year"
-                  placeholder="YYYY"
-                  {...register("year", {
-                    required: "This is required",
-                    minLength: {
-                      value: 4,
-                      message: "Minimum length should be 4",
-                    },
-                  })}
-
-                  size="sm"
-                />
-                <FormErrorMessage>
-                  {errors["year"] && errors["year"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="gender">Gender</FormLabel>
-                <Select
-                  id="gender"
-                  placeholder="Select option"
-                  {...register("gender", {
-                    required: "This is required",
-                  })}
-
-                  size="sm"
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </Select>
-                <FormErrorMessage>
-                  {errors["gender"] && errors["gender"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired >
-                <FormLabel>Bar Council Certificate</FormLabel>
-
-                <Input borderRadius="4px" type="file" accept="*" paddingTop='0.25rem' />
-                <FormErrorMessage>
-                  {errors["bar-council-file"] &&
-                    errors["bar-council-file"].message}
-                </FormErrorMessage>
-              </FormControl>
-              <FormControl isRequired >
-                <FormLabel>Aadhar Card</FormLabel>
-
-                <Input borderRadius="4px" type="file" accept="*" paddingTop='0.25rem' />
-                <FormErrorMessage>
-                  {errors["aadhar-card-required"] &&
-                    errors["aadhar-card-required"].message}
-                </FormErrorMessage>
-              </FormControl>
-            </FlexColumn>
-          </FlexRow>
-          <FlexRow>
             <Button
-              mt="2rem"
-              colorScheme="blue"
+              mt={4}
+              colorScheme="teal"
               isLoading={isSubmitting}
               type="submit"
-              width="20%"
+              width="10%"
             >
               Submit
             </Button>
-          </FlexRow>
-        </form>
-      </Box>
-    </Flex>
+          </FlexColumn>
+        </FlexRow>
+      </form>
+    </VStack>
   );
 }
