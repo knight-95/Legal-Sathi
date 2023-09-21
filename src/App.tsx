@@ -10,6 +10,8 @@ import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
+import EmbeddedChatbot from "./Pages/EmbeddedChatBot";
+
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -23,6 +25,7 @@ export const App = () => (
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
         <Route path="/lawyersprofile" element={<LawyersProfile />} />
+        <Route path="/chatbot" element={<EmbeddedChatbot/>}/>
       </Routes>
       <Footer />
     </Router>
