@@ -26,7 +26,6 @@ export const App = () => (
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
         <Route path="/lawyersprofile" element={<LawyersProfile />} />
-        <Route path="/chatbot" element={<EmbeddedChatbot/>}/>
       </Routes>
       <ReviewCard />
       <RatingAndReviewCard 
