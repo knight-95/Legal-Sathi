@@ -287,14 +287,14 @@ function AdminDashboard({
             <Button
               colorScheme="green"
               size="sm"
-              onClick={() => handleApproveReject(data._id, "approve")}
+              // onClick={() => handleApproveReject(data._id, "approve")}
             >
               Approve
             </Button>
             <Button
               colorScheme="red"
               size="sm"
-              onClick={() => handleApproveReject(data._id, "reject")}
+              // onClick={() => handleApproveReject(data._id, "reject")}
             >
               Reject
             </Button>
