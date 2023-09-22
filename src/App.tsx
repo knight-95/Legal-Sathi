@@ -11,8 +11,8 @@ import Leaderboard from "./Components/Leaderboard";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
 import StateCityDropdown from "./Components/StateCityDropdown";
-import ReviewCard from "./Components/Cards/ReviewCard";
 import RatingAndReviewCard from "./Components/Cards/RatingAndReviewCard";
+import AdminDashboard from "./Pages/AdminDashboard";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -26,13 +26,15 @@ export const App = () => (
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
         <Route path="/lawyersprofile" element={<LawyersProfile />} />
+        <Route path="/admindashboard" element={<AdminDashboard />} />
       </Routes>
-      <ReviewCard />
-      <RatingAndReviewCard 
-      userName="John Doe"
-      userProfilePhoto="https://example.com/profile.jpg"
-      userRating={5}
-      reviewContent="This is a sample review content." />
+
+      {/* <RatingAndReviewCard
+        userName="John Doe"
+        userProfilePhoto="https://example.com/profile.jpg"
+        userRating={5}
+        reviewContent="This is a sample review content."
+      /> */}
       <Footer />
 
       {/* <StateCityDropdown /> */}

@@ -3,7 +3,6 @@ import { Box, Text } from "@chakra-ui/react";
 import Lawyer from "../Components/Lawyer"; // Import the Lawyer interface
 import ProfileCard from "./Cards/ProfileCard";
 import SmallProfileCard from "./Cards/ProfileCardFilter";
-import { layer } from "@fortawesome/fontawesome-svg-core";
 
 interface Props {
     filteredLawyers: Lawyer[]; // Type filteredLawyers as an array of Lawyer objects
