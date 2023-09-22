@@ -13,7 +13,7 @@ import ServicesCards from "../Components/Cards/ServicesCards";
 import ProfileCards from "../Components/Cards/ProfileCard";
 import ExpertAreaCard from "../Components/Cards/ExpertAreaCard";
 import MarqueeSection1 from "../Components/MarqueeSection";
-import StateCityDropdown from "../Components/StateCityDropdown";
+import StateCityDropdown from "../Components/SearchFilter";
 
 const HomeScreen = () => {
   return (

@@ -19,6 +19,7 @@ type Props = {
   description?: string;
   experience?: string;
   aadhar?: string;
+  languages?:string[];
 };
 
 interface ApprovalRequest {
@@ -26,7 +27,17 @@ interface ApprovalRequest {
   firstName: string;
   lastName: string;
   email: string;
-  // Add more fields based on your registration form data
+  city: string;
+  state: string;
+  barCouncilFile: File,
+  barCouncilId: string;
+  gender: string;
+  specializations: string[];
+  photo: File;
+  description: string;
+  experience: number;
+  aadhar: string;
+  languages: string[];
 }
 
 function AdminDashboard({

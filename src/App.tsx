@@ -10,7 +10,7 @@ import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
-import StateCityDropdown from "./Components/StateCityDropdown";
+import StateCityDropdown from "./Components/SearchFilter";
 import RatingAndReviewCard from "./Components/Cards/RatingAndReviewCard";
 import AdminDashboard from "./Pages/AdminDashboard";
 

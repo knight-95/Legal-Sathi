@@ -37,7 +37,7 @@ const stateCityData: StateCityData = {
   // Add more states and cities as needed
 };
 
-function StateCityDropdown() {
+function SearchFilter() {
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [cities, setCities] = useState<string[]>([]);
@@ -258,4 +258,4 @@ function StateCityDropdown() {
   );
 }
 
-export default StateCityDropdown;
+export default SearchFilter;
