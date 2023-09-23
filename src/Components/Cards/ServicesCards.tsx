@@ -13,7 +13,6 @@ import {
 
 type Props = {
   index?: string;
-
   title: string;
   description: string;
   onClick?: any;
@@ -40,7 +39,7 @@ export default function ServicesCards({
       <Box
         maxW={"20rem"}
         w={"full"}
-        // eslint-disable-next-line react-hooks/rules-of-hooks
+        height="25rem"
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"lg"}
@@ -48,29 +47,39 @@ export default function ServicesCards({
         overflow={"hidden"}
         marginRight="0.5rem"
         marginLeft="0.5rem"
-        // _hover={height="2rem"}
+        transition={"transform 0.2s ease-in-out"}
+        _hover={{
+          transform: "scale(1.02)",
+          boxShadow: "xl",
+          cursor: "pointer",
+        }}
+        display="flex"
+        flexDirection="column" // Set the card's content as a column
+        justifyContent="space-between" // Align items to the start and end
       >
         <Stack>
           <Text
             color={"green.500"}
             textTransform={"uppercase"}
             fontWeight={800}
-            fontSize={"sm"}
+            fontSize={"lg"}
             letterSpacing={1.1}
           >
             {index}
           </Text>
           <Heading
-            // eslint-disable-next-line react-hooks/rules-of-hooks
             color={useColorModeValue("gray.700", "white")}
             fontSize={"2xl"}
             fontFamily={"body"}
+            marginTop="1rem"
           >
             {title}
           </Heading>
-          <Text color={"gray.500"}>{description}</Text>
+          <Text color={"gray.500"} marginTop="1rem">
+            {description}
+          </Text>
         </Stack>
-        <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
+        <Stack direction={"row"} spacing={4} align={"center"}>
           <Avatar
             src={"https://avatars0.githubusercontent.com/u/1164541?v=4"}
           />
