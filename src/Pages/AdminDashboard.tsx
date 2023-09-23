@@ -64,7 +64,7 @@ function AdminDashboard({
 
   useEffect(() => {
     // Fetch approval requests when the component mounts
-    fetch("/api/admin/approval-requests")
+    fetch("/api/admin/v1/approval-requests")
       .then((response) => response.json())
       .then((data: ApprovalRequest[]) => {
         setApprovalRequests(data);
@@ -75,7 +75,7 @@ function AdminDashboard({
   }, []);
 
   const handleApproveReject = (id: string, status: string) => {
-    fetch(`/api/admin/approval-requests/${id}`, {
+    fetch(`/api/admin/v1/approval-requests/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
