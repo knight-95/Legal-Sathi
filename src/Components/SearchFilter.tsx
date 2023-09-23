@@ -13,7 +13,6 @@ import {
   Spinner, // Import Spinner for loading state
 } from "@chakra-ui/react";
 import LawyerList from "./LawyerList";
-import { response } from "express";
 import Loader from "../_ui/loader/Loader";
 
 interface StateCityData {
@@ -29,10 +28,11 @@ interface Lawyer {
 }
 
 const stateCityData: StateCityData = {
-  "New York": ["New York City", "Buffalo", "Rochester"],
-  California: ["Los Angeles", "San Francisco", "San Diego"],
+  Rajasthan: ["Jaipur", "Kota", "Udaipur"],
+  "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur"],
   Maharastra: ["Pune", "Mumbai", "Nagpur"],
   Delhi: ["Delhi"],
+  Gujarat:["Ahemdabad", "Surat", "Vadodra"]
   // Add more states and cities as needed
 };
 
@@ -55,16 +55,18 @@ function SearchFilter() {
     "English",
     "Hindi",
     "Marathi",
-    "German",
-    "Chinese",
+    "Punjabi",
+    "Gujrati",
     // Add more languages as needed
   ];
   const practiceAreas = [
     "Criminal",
     "Family Issues",
-    "Real Estate Law",
-    "Personal Injury Law",
-    "Corporate Law",
+    "Real Estate",
+    "Personal Injury",
+    "Corporate",
+    "Cyber Crime",
+    "Property"
     // Add more practice areas as needed
   ];
 
@@ -148,7 +150,7 @@ function SearchFilter() {
           textAlign="center"
           fontSize={style.font.h3}
           fontWeight={style.fontWeight.extraDark}
-          marginBottom="1rem"
+          marginBottom="2rem"
         >
           Find the Top Rated Lawyers
         </Text>
@@ -222,7 +224,7 @@ function SearchFilter() {
         </FormControl>
       </FlexRow>
       <FlexRow>
-        <Button colorScheme="blue" mt={4} onClick={handleCombinedClick}>
+        <Button colorScheme="blue" onClick={handleCombinedClick} marginTop="2rem" marginBottom="1rem">
           {loading ? <Spinner size="sm" color="white" /> : "Submit"}
         </Button>
       </FlexRow>
@@ -231,12 +233,12 @@ function SearchFilter() {
       {loading ? (
         <Loader size="3rem" />
       ) : (
-        <Box>
+        <FlexRow marginTop="1rem">
           <LawyerList
             firstRender={firstRender}
             filteredLawyers={filteredLawyers}
           />
-        </Box>
+        </FlexRow>
       )}
     </Box>
   );

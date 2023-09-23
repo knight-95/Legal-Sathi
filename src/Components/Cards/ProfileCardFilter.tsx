@@ -66,7 +66,12 @@ const ProfileCardFilter = ({
             <Box color="white" marginRight="2px">
               {rating}
             </Box>
+            <FlexRow>
             <AiFillStar color="white" />
+            <AiFillStar color="white" />
+            <AiFillStar color="white" />
+            <AiFillStar color="white" />
+            </FlexRow>
           </Flex>
         </FlexColumn>
         {img}
