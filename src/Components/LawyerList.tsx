@@ -23,7 +23,7 @@ function LawyerList({ filteredLawyers, firstRender }: Props) {
                     <SmallProfileCard key={lawyer._id} specializations={lawyer.specializations} description={lawyer.description} firstName={lawyer.firstName} lastName={lawyer.lastName} img={lawyer.image} city={lawyer.city} state={lawyer.state} languages={lawyer.languages} experience={lawyer.experience}  />
                 ))
             ) : (
-                firstRender ? <Text>No lawyers found.</Text> : ""
+                firstRender ? <Text marginLeft="2.5rem">No lawyers found.</Text> : ""
             )}
         </div>
     );

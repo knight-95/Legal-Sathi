@@ -16,7 +16,6 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 import Slider from "react-slick";
 
-
 // Settings for the slider
 const settings = {
   dots: true,
@@ -46,19 +45,20 @@ export default function CaptionCarousel() {
     {
       title: "Online Legal Consultation Anytime Anywhere",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:"https://gateway.lighthouse.storage/ipfs/QmZENsbfetsXk226hTUmuN7eJ67PvE553a2n7mvb8Xbv1Q",
+      image:
+        "https://gateway.lighthouse.storage/ipfs/QmSnpjmsjhHZ9ynUWATjVkhQnXwPLdhMWSxxwY79hofbx8/i1.jpg",
     },
     {
       title: "Document Drafting by Expert Layers",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        "https://gateway.lighthouse.storage/ipfs/QmPduG4strRAbZTRTBFUo6JHiQjbeANeNsyXn9jb9RFxyx",
+        "https://gateway.lighthouse.storage/ipfs/QmSnpjmsjhHZ9ynUWATjVkhQnXwPLdhMWSxxwY79hofbx8/i2.jpg",
     },
     {
       title: "Buy Property with Confidence",
       text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
       image:
-        "https://gateway.lighthouse.storage/ipfs/QmZrSubPWmZkUYacCzXzBmrwvoRfs5eGPJYMwFYgzhKCxx",
+        "https://gateway.lighthouse.storage/ipfs/QmSnpjmsjhHZ9ynUWATjVkhQnXwPLdhMWSxxwY79hofbx8/i3.jpg",
     },
   ];
 
@@ -111,15 +111,15 @@ export default function CaptionCarousel() {
         {cards.map((card, index) => (
           <Box
             key={index}
-            // height={"6xl"}
             width="xl"
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
             backgroundImage={`url(${card.image})`}
+            display="flex"
+            justifyContent="flex-end" // Align the content to the right end
           >
-            {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
                 spacing={6}
@@ -127,12 +127,21 @@ export default function CaptionCarousel() {
                 maxW={"lg"}
                 position="absolute"
                 top="50%"
+                left="50%"
                 transform="translate(0, -50%)"
               >
-                <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }} color="white">
+                <Heading
+                  fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                  textAlign="end"
+                  color="white"
+                >
                   {card.title}
                 </Heading>
-                <Text fontSize={{ base: "md", lg: "lg" }} color="white">
+                <Text
+                  fontSize={{ base: "md", lg: "lg" }}
+                  textAlign="end"
+                  color="white"
+                >
                   {card.text}
                 </Text>
               </Stack>

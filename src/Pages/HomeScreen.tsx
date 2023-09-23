@@ -14,11 +14,13 @@ import ProfileCards from "../Components/Cards/ProfileCard";
 import ExpertAreaCard from "../Components/Cards/ExpertAreaCard";
 import MarqueeSection1 from "../Components/MarqueeSection";
 import StateCityDropdown from "../Components/SearchFilter";
+import Assistant from "../Components/Assistant";
 
 const HomeScreen = () => {
   return (
     <>
       <CaptionCarousel />
+      <Assistant/>
       <StateCityDropdown/>
       <MarqueeSection1 />
       <FlexRow hrAlign="space-between" paddingLeft="1.5rem">
@@ -32,6 +34,8 @@ const HomeScreen = () => {
           />
         ))}
       </FlexRow>
+      
+
       {/* <ProfileCards/> */}
       {/* <Login />
       <Signup />
