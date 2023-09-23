@@ -22,6 +22,7 @@ import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
 // import StateCityDropdown from "../Components/StateCitydropdown";
 import ChipInput from "../Components/ChipInput";
+const myInputRef = React.createRef();
 
 interface FormValues {
   firstName: string;
@@ -37,6 +38,8 @@ interface FormValues {
   photo: File;
   description: string;
   experience: number;
+  aadhar: string;
+  errors:any;
 }
 
 export default function RegistrationForm() {
@@ -54,7 +57,7 @@ export default function RegistrationForm() {
 
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("http://localhost:5000/api/v1/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -212,6 +215,25 @@ export default function RegistrationForm() {
                   required: "This is required",
                   minLength: {
                     value: 4,
+                    message: "Please enter experience",
+                  },
+                })}
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["state"] && errors["state"].message}
+              </FormErrorMessage>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel htmlFor="aadhar">Aadhar Number</FormLabel>
+              <Input
+                id="aadhar"
+                placeholder="XXXX XXXX XXXX"
+                {...register("aadhar", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
                     message: "Minimum length should be 4",
                   },
                 })}
@@ -221,6 +243,7 @@ export default function RegistrationForm() {
                 {errors["state"] && errors["state"].message}
               </FormErrorMessage>
             </FormControl>
+
             <FormControl isRequired>
               <FormLabel htmlFor="barCouncilId">Bar Council ID</FormLabel>
               <Input
@@ -279,8 +302,6 @@ export default function RegistrationForm() {
                   required: "This is required",
                 })}
               // errors={errors}
-              // setValue={setValue} // Ensure you have `setValue` and `getValues` in your scope
-              // getValues={getValues}
               />
             </FormControl>
 
