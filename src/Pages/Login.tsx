@@ -17,10 +17,6 @@ import {
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-type FormValues = {
-  email: string;
-  password: string;
-};
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -33,7 +29,7 @@ export default function Login() {
   // Function to handle form submission
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
     try {
-      const response = await fetch("/api/v1/login", {
+      const response = await fetch("http://localhost:5000/api/v1/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

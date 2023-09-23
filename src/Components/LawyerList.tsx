@@ -6,9 +6,10 @@ import SmallProfileCard from "./Cards/ProfileCardFilter";
 
 interface Props {
     filteredLawyers: Lawyer[]; // Type filteredLawyers as an array of Lawyer objects
+    firstRender:boolean;
 }
 
-function LawyerList({ filteredLawyers }: Props) {
+function LawyerList({ filteredLawyers, firstRender }: Props) {
     return (
         <div>
             {filteredLawyers.length > 0 ? (
@@ -22,7 +23,7 @@ function LawyerList({ filteredLawyers }: Props) {
                     <SmallProfileCard key={lawyer._id} specializations={lawyer.specializations} description={lawyer.description} firstName={lawyer.firstName} lastName={lawyer.lastName} img={lawyer.image} city={lawyer.city} state={lawyer.state} languages={lawyer.languages} experience={lawyer.experience}  />
                 ))
             ) : (
-                <Text>No lawyers found.</Text>
+                firstRender ? <Text marginLeft="2.5rem">No lawyers found.</Text> : ""
             )}
         </div>
     );

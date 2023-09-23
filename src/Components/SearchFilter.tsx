@@ -28,16 +28,15 @@ interface Lawyer {
   // Add more properties as needed
 }
 
-
 const stateCityData: StateCityData = {
   "New York": ["New York City", "Buffalo", "Rochester"],
-  "California": ["Los Angeles", "San Francisco", "San Diego"],
-  "Maharastra":["Pune", "Mumbai", "Nagpur"],
-  "Delhi" : ["Delhi"]
+  California: ["Los Angeles", "San Francisco", "San Diego"],
+  Maharastra: ["Pune", "Mumbai", "Nagpur"],
+  Delhi: ["Delhi"],
   // Add more states and cities as needed
 };
 
-function StateCityDropdown() {
+function SearchFilter() {
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedCity, setSelectedCity] = useState<string>("");
   const [cities, setCities] = useState<string[]>([]);
@@ -45,6 +44,12 @@ function StateCityDropdown() {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [lawyers, setLawyers] = useState<string[]>([]);
+  const [firstRender, setFirstRender] = useState<boolean>(false);
+
+  const handleCombinedClick = () => {
+    handleSearchClick();
+    setFirstRender(true);
+  };
 
   const languages = [
     "English",
@@ -86,38 +91,6 @@ function StateCityDropdown() {
   // Function to fetch lawyers based on selected filters
   const [filteredLawyers, setFilteredLawyers] = useState([]);
 
-
-  // const fetchLawyers = useCallback(async () => {
-  //   try {
-  //     setLoading(true);
-  //     const response = await fetch("http://localhost:5000/api/v1/search-lawyers", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         state: selectedState,
-  //         city: selectedCity,
-  //         language: selectedLanguage,
-  //         practiceArea: selectedPracticeArea,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       console.log("Lawyers : ", data)
-  //       setLawyers(data.lawyers);
-  //     } else {
-  //       alert("Failed to fetch lawyers.");
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert("An error occurred while fetching lawyers.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [selectedState, selectedCity, selectedLanguage, selectedPracticeArea]);
-
   // Call the API when the "Submit" button is clicked
   const handleSearchClick = () => {
     fetchLawyers();
@@ -128,18 +101,21 @@ function StateCityDropdown() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/v1/search-lawyers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          state: selectedState,
-          city: selectedCity,
-          language: selectedLanguage,
-          specializations: selectedPracticeArea,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:5000/api/v1/search-lawyers",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            state: selectedState,
+            city: selectedCity,
+            language: selectedLanguage,
+            specializations: selectedPracticeArea,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -155,7 +131,12 @@ function StateCityDropdown() {
   };
 
   useEffect(() => {
-    if (selectedState || selectedCity || selectedLanguage || selectedPracticeArea) {
+    if (
+      selectedState ||
+      selectedCity ||
+      selectedLanguage ||
+      selectedPracticeArea
+    ) {
       fetchLawyers();
     }
   }, [selectedState, selectedCity, selectedLanguage, selectedPracticeArea]);
@@ -165,7 +146,7 @@ function StateCityDropdown() {
       <Box>
         <Text
           textAlign="center"
-          fontSize={style.font.h2}
+          fontSize={style.font.h3}
           fontWeight={style.fontWeight.extraDark}
           marginBottom="1rem"
         >
@@ -241,7 +222,7 @@ function StateCityDropdown() {
         </FormControl>
       </FlexRow>
       <FlexRow>
-        <Button colorScheme="blue" mt={4} onClick={handleSearchClick}>
+        <Button colorScheme="blue" mt={4} onClick={handleCombinedClick}>
           {loading ? <Spinner size="sm" color="white" /> : "Submit"}
         </Button>
       </FlexRow>
@@ -251,11 +232,14 @@ function StateCityDropdown() {
         <Loader size="3rem" />
       ) : (
         <Box>
-          <LawyerList filteredLawyers={filteredLawyers} />
+          <LawyerList
+            firstRender={firstRender}
+            filteredLawyers={filteredLawyers}
+          />
         </Box>
       )}
     </Box>
   );
 }
 
-export default StateCityDropdown;
+export default SearchFilter;

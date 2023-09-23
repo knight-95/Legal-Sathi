@@ -20,7 +20,11 @@ interface ChipInputProps {
   name: string;
   placeholder: string;
   register: any; // You might need to replace 'any' with the actual type for register
+  // errors:any;
+  // setValue: any;
+  // getValues: any;
 }
+const register = React.createRef();
 
 const specializations: string[] = [
   "Criminal Law",
@@ -30,6 +34,7 @@ const specializations: string[] = [
   "Intellectual Property Law",
   // Add more specializations as needed
 ];
+
 
 const ChipInput: React.FC<ChipInputProps> = ({ label, name, placeholder, register }) => {
   const [inputValue, setInputValue] = useState<string>("");

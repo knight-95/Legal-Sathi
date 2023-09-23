@@ -19,27 +19,26 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { FieldValues, useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
-type FormValues = {
-  "first-name": string;
-  "last-name": string;
-  email: string;
-  password: string;
-  userType: string;
-};
 
 export default function Signup() {
+  const navigate = useNavigate();
+
+
   const [showPassword, setShowPassword] = useState(false);
   const {
     handleSubmit,
     reset,
-  } = useForm<FormValues>();
+    register,
+  } = useForm();
 
-  const onSubmit: SubmitHandler<FormValues> = async (values) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {
     try {
       // Send a POST request to your backend signup route
-      const response = await fetch('/api/signup', {
+      console.log("value", values)
+      const response = await fetch('http://localhost:5000/api/v1/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,11 +48,13 @@ export default function Signup() {
 
       if (response.ok) {
         const data = await response.json();
+        navigate("/login")
         alert(data.message); // Display a success message
         reset();
       } else {
         throw new Error('Signup failed');
       }
+
     } catch (error) {
       console.error('Signup error:', error);
       alert('Signup failed. Please try again later.');
@@ -84,25 +85,38 @@ export default function Signup() {
               <HStack>
                 <Box>
                   <FormControl isRequired>
-                    <FormLabel htmlFor="first-name">First Name</FormLabel>
-                    <Input id="firstName" type="text" name="first-name" />
+                    <FormLabel htmlFor="firstName">First Name</FormLabel>
+                    <Input
+                      id="firstName"
+                      type="text"
+                      // name="firstName"
+                      {...register("firstName")} />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl>
-                    <FormLabel htmlFor="last-name">Last Name</FormLabel>
-                    <Input id="lastName" type="text" name="last-name" />
+                    <FormLabel htmlFor="lastName">Last Name</FormLabel>
+                    <Input id="lastName"
+                      type="text"
+                      // name="lastName"
+                      {...register("lastName")} />
                   </FormControl>
                 </Box>
               </HStack>
-              <FormControl isRequired>
+              <FormControl isRequired >
                 <FormLabel htmlFor="email">Email address</FormLabel>
-                <Input id="email" type="email" name="email" />
+                <Input id="email"
+                  type="email"
+                  // name="email"
+                  {...register("email")}
+                />
               </FormControl>
               <FormControl isRequired>
                 <FormLabel htmlFor="password">Password</FormLabel>
                 <InputGroup>
-                  <Input id="password" type={showPassword ? "text" : "password"} name="password" />
+                  <Input id="password" type={showPassword ? "text" : "password"}
+                    //  name="password"
+                    {...register("password")} />
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}
@@ -114,17 +128,6 @@ export default function Signup() {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
-              </FormControl>
-              <FormControl isRequired>
-                <FormLabel htmlFor="gender">User Type</FormLabel>
-                <Select
-                  id="gender"
-                  placeholder="Select option"
-                  size="sm"
-                >
-                  <option value="Client">Client</option>
-                  <option value="Admin">Admin</option>
-                </Select>
               </FormControl>
               <Stack spacing={10} pt={2}>
                 <Button

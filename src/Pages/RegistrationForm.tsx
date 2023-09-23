@@ -22,20 +22,24 @@ import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
 // import StateCityDropdown from "../Components/StateCitydropdown";
 import ChipInput from "../Components/ChipInput";
+const myInputRef = React.createRef();
 
 interface FormValues {
-  "first-name": string;
-  "last-name": string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   city: string;
   state: string;
-  "bar-council-Id": string;
+  barCouncilId: string;
   gender: string;
-  "bar-council-file": File;
+  barCouncilFile: File;
   specializations: string[];
   photo: File;
   description: string;
+  experience: number;
+  aadhar: string;
+  errors:any;
 }
 
 export default function RegistrationForm() {
@@ -53,7 +57,7 @@ export default function RegistrationForm() {
 
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("http://localhost:5000/api/v1/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,49 +80,47 @@ export default function RegistrationForm() {
 
   return (
     <VStack spacing={4} align="stretch" p={4}>
-      <Text fontSize="3rem" fontWeight="bold" color="teal" align="center">
+      <Text fontSize="3rem" fontWeight="bold" align="center">
         Create a New Account
       </Text>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FlexRow vrAlign="space-between" hrAlign="space-evenly">
           <FlexColumn width="30%" height="70vh" hrAlign="space-evenly">
             <FormControl isRequired>
-              <FormLabel htmlFor="first-name">First name</FormLabel>
+              <FormLabel htmlFor="firstName">First name</FormLabel>
               <Input
-                id="first-name"
+                id="firstName"
                 placeholder="First name"
-                {...register("first-name", {
+                {...register("firstName", {
                   required: "This is required",
                   minLength: {
                     value: 4,
                     message: "Minimum length should be 4",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
-                {errors["first-name"] && errors["first-name"].message}
+                {errors["firstName"] && errors["firstName"].message}
               </FormErrorMessage>
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel htmlFor="last-name">Last name</FormLabel>
+              <FormLabel htmlFor="lastName">Last name</FormLabel>
               <Input
-                id="last-name"
+                id="lastName"
                 placeholder="Last name"
-                {...register("last-name", {
+                {...register("lastName", {
                   required: "This is required",
                   minLength: {
                     value: 4,
                     message: "Minimum length should be 4",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
-                {errors["last-name"] && errors["last-name"].message}
+                {errors["lastName"] && errors["lastName"].message}
               </FormErrorMessage>
             </FormControl>
             <FormControl isRequired>
@@ -133,7 +135,6 @@ export default function RegistrationForm() {
                     message: "Minimum length should be 4",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
@@ -178,7 +179,6 @@ export default function RegistrationForm() {
                     message: "Minimum length should be 4",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
@@ -197,7 +197,6 @@ export default function RegistrationForm() {
                     message: "Minimum length should be 4",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
@@ -208,22 +207,59 @@ export default function RegistrationForm() {
 
           <FlexColumn width="30%" height="70vh" hrAlign="space-evenly">
             <FormControl isRequired>
-              <FormLabel htmlFor="bar-council-Id">Bar Council ID</FormLabel>
+              <FormLabel htmlFor="experience">Experience</FormLabel>
               <Input
-                id="bar-council-Id"
+                id="experience"
+                placeholder="5 Years"
+                {...register("experience", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Please enter experience",
+                  },
+                })}
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["state"] && errors["state"].message}
+              </FormErrorMessage>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel htmlFor="aadhar">Aadhar Number</FormLabel>
+              <Input
+                id="aadhar"
+                placeholder="XXXX XXXX XXXX"
+                {...register("aadhar", {
+                  required: "This is required",
+                  minLength: {
+                    value: 4,
+                    message: "Minimum length should be 4",
+                  },
+                })}
+                size="sm"
+              />
+              <FormErrorMessage>
+                {errors["state"] && errors["state"].message}
+              </FormErrorMessage>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel htmlFor="barCouncilId">Bar Council ID</FormLabel>
+              <Input
+                id="barCouncilId"
                 placeholder="Bar Council ID"
-                {...register("bar-council-Id", {
+                {...register("barCouncilId", {
                   required: "This is required",
                   minLength: {
                     value: 10,
                     message: "Minimum length should be 10",
                   },
                 })}
-                color="teal"
                 size="sm"
               />
               <FormErrorMessage>
-                {errors["bar-council-Id"] && errors["bar-council-Id"].message}
+                {errors["barCouncilId"] && errors["barCouncilId"].message}
               </FormErrorMessage>
             </FormControl>
 
@@ -235,7 +271,6 @@ export default function RegistrationForm() {
                 {...register("gender", {
                   required: "This is required",
                 })}
-                color="teal"
                 size="sm"
               >
                 <option value="Male">Male</option>
@@ -246,13 +281,13 @@ export default function RegistrationForm() {
                 {errors["gender"] && errors["gender"].message}
               </FormErrorMessage>
             </FormControl>
-            
+
             <FormControl isRequired>
               <FormLabel>Bar Council Certificate or ID Card</FormLabel>
               <Input type="file" accept="*" />
               <FormErrorMessage>
-                {errors["bar-council-file"] &&
-                  errors["bar-council-file"].message}
+                {errors["barCouncilFile"] &&
+                  errors["barCouncilFile"].message}
               </FormErrorMessage>
             </FormControl>
 
@@ -267,8 +302,6 @@ export default function RegistrationForm() {
                   required: "This is required",
                 })}
               // errors={errors}
-              // setValue={setValue} // Ensure you have `setValue` and `getValues` in your scope
-              // getValues={getValues}
               />
             </FormControl>
 
@@ -301,7 +334,7 @@ export default function RegistrationForm() {
 
             <Button
               mt={4}
-              colorScheme="teal"
+              colorScheme="blue"
               isLoading={isSubmitting}
               type="submit"
               width="10%"

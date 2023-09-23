@@ -32,127 +32,26 @@ export default function MarqueeSection(props: any) {
         <Marquee
           speed={props.speed}>
           <GradientBox>
-            <ExpertAreaCard category="Criminal" />
+            <ExpertAreaCard category="Criminal" imgUrl="https://gateway.lighthouse.storage/ipfs/QmT4PfR4ubRZPTbzPLCceqDT1o4rRXzgLYFhAP9ZrM1fhc" />
           </GradientBox>
           <GradientBox>
-            <ExpertAreaCard category="Family Issue" />
+            <ExpertAreaCard category="Family Issue" imgUrl="https://gateway.lighthouse.storage/ipfs/QmQRR1q4YzJuu8P1NtjntLLh6fb6kpqu6WBfPG1Fuyi2R2/family-matters.webp"/>
           </GradientBox>
           <GradientBox>
-            <ExpertAreaCard category="Corporate" />
+            <ExpertAreaCard category="Corporate" imgUrl="https://gateway.lighthouse.storage/ipfs/QmQRR1q4YzJuu8P1NtjntLLh6fb6kpqu6WBfPG1Fuyi2R2/startup-business.webp"/>
           </GradientBox>
           <GradientBox>
-            <ExpertAreaCard category="Child Custody" />
+            <ExpertAreaCard category="Child Custody" imgUrl="https://gateway.lighthouse.storage/ipfs/QmQRR1q4YzJuu8P1NtjntLLh6fb6kpqu6WBfPG1Fuyi2R2/child-custody.webp"/>
           </GradientBox>
           <GradientBox>
-            <ExpertAreaCard category="Blackmailing Issues" />
+            <ExpertAreaCard category="Blackmailing Issues" imgUrl="https://gateway.lighthouse.storage/ipfs/QmQRR1q4YzJuu8P1NtjntLLh6fb6kpqu6WBfPG1Fuyi2R2/blackmailed-online.webp" />
           </GradientBox>
           <GradientBox>
-            <ExpertAreaCard category="Property Disputes" />
+            <ExpertAreaCard category="Property Disputes" imgUrl="https://gateway.lighthouse.storage/ipfs/QmQRR1q4YzJuu8P1NtjntLLh6fb6kpqu6WBfPG1Fuyi2R2/buying-property.webp"/>
           </GradientBox>
 
         </Marquee>
       </Box>
-      {/* <Box
-        sx={{
-          marginTop:"20px", padding: "0% 6%",
-          "@media screen and (min-width: 768px)": {
-            display: "none",
-          },
-        }}
-      >
-        <Marquee
-          speed={props.speed}
-          gradient={true}
-          gradientColor={[0, 5, 17]}
-          gradientWidth={100}
-        >
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[0]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[1]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[2]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[3]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[4]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[5]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[6]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[7]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[8]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[9]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[10]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[11]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[12]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[13]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[14]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[15]} />
-            </LogoBox>
-          </GradientBox>
-          <GradientBox className="me-md-5 ms-3">
-            <LogoBox>
-              <BrandLogos path={props.images[16]} />
-            </LogoBox>
-          </GradientBox>
-        </Marquee>
-      </Box> */}
     </>
   );
 }
