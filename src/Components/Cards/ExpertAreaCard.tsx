@@ -12,23 +12,27 @@ import {
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
+import Loader from "../../_ui/loader/Loader";
+import FlexRow from "../../_ui/flex/FlexRow";
+import LawyerList from "../LawyerList";
+import { useState } from "react";
 
 type Props = {
   index?: string;
-  category?: string;
+  specializations?: string;
   description?: string;
-  onClick?: any;
   buttonText?: string;
   bgGrid?: string;
   imgUrl?: string;
   headingFontSize?: string;
   descriptionFontSize?: string;
+  onClick?: (specialization: string) => void;
 };
 
 export default function ExpertAreaCard({
   bgGrid,
   index,
-  category,
+  specializations,
   description,
   headingFontSize,
   descriptionFontSize,
@@ -36,6 +40,30 @@ export default function ExpertAreaCard({
   buttonText,
   imgUrl,
 }: Props) {
+  const [firstRender, setFirstRender] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [filteredLawyers, setFilteredLawyers] = useState([]);
+
+  const handleConsultNowClick = async (_event: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      // Make an API request to fetch lawyers by specialization
+      console.log("i am here  ")
+      const url = `/api/v1/lawyers/${specializations}`;
+      const response = await fetch(url);
+      
+      if (response.ok) {
+        const data = await response.json();
+        // Handle the data (e.g., display a list of lawyers)
+        setFilteredLawyers(data.lawyers);
+        console.log(data.lawyers);
+      } else {
+        // Handle the error
+        console.error('Failed to fetch lawyers');
+      }
+    } catch (error) {
+      console.error('API request error:', error);
+    }
+  };
   return (
     <Center py={6}>
       <Box
@@ -52,7 +80,7 @@ export default function ExpertAreaCard({
         <Box p={6} _hover={{ cursor: "pointer" }}>
           <Stack spacing={0} align={"center"} mb={5}>
             <Text fontSize="1rem" fontWeight="bold">
-              {category}
+              {specializations}
             </Text>
           </Stack>
 
@@ -65,10 +93,21 @@ export default function ExpertAreaCard({
               transform: "translateY(-2px)",
               boxShadow: "lg",
             }}
+            onClick={handleConsultNowClick}
           >
             <Text>Consult Now </Text>
           </Button>
         </Box>
+        {loading ? (
+          <Loader size="3rem" />
+        ) : (
+          <FlexRow marginTop="1rem">
+            <LawyerList
+              firstRender={firstRender}
+              filteredLawyers={filteredLawyers}
+            />
+          </FlexRow>
+        )}
       </Box>
     </Center>
   );
