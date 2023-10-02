@@ -3,6 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 import Lawyer from "../Components/Lawyer"; // Import the Lawyer interface
 import ProfileCard from "./Cards/ProfileCard";
 import SmallProfileCard from "./Cards/ProfileCardFilter";
+import FlexRow from "../_ui/flex/FlexRow";
 
 interface Props {
     filteredLawyers: Lawyer[]; // Type filteredLawyers as an array of Lawyer objects
@@ -11,7 +12,7 @@ interface Props {
 
 function LawyerList({ filteredLawyers, firstRender }: Props) {
     return (
-        <div>
+        <FlexRow >
             {filteredLawyers.length > 0 ? (
                 filteredLawyers.map((lawyer) => (
                     //   <Box key={lawyer._id} p={2} border="1px solid #ccc" mt={2}>
@@ -25,7 +26,7 @@ function LawyerList({ filteredLawyers, firstRender }: Props) {
             ) : (
                 firstRender ? <Text marginLeft="2.5rem">No lawyers found.</Text> : ""
             )}
-        </div>
+        </FlexRow>
     );
 }
 
