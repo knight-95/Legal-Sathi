@@ -44,10 +44,10 @@ export default function ExpertAreaCard({
   const [loading, setLoading] = useState(false);
   const [filteredLawyers, setFilteredLawyers] = useState([]);
 
-  const handleConsultNowClick = async (_event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleConsultNowClick = async () => {
     try {
       // Make an API request to fetch lawyers by specialization
-      console.log("i am here  ")
+      console.log("i am here ")
       const url = `http://localhost:5000/api/v1/lawyers/${specializations}`;
       const response = await fetch(url);
       
@@ -61,7 +61,7 @@ export default function ExpertAreaCard({
         console.error('Failed to fetch lawyers');
       }
     } catch (error) {
-      console.error('API request error:', error);
+      console.error(error) ;
     }
   };
   return (

@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Flex,
   Box,
@@ -17,7 +15,7 @@ import {
   Link,
   Divider,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
 import Leaderboard from "../Components/Leaderboard";
@@ -25,12 +23,28 @@ import { style } from "../styles/StyledConstants";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMdPeople } from "react-icons/io";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import ProfileCards from "../Components/Cards/ProfileCard";
 import ProfileCard from "../Components/Cards/ProfileCard";
-import lawyersProfile from "../data/lawyersProfile";
-import ProfileHorizontalCard from "../Components/Cards/ProfileHorizontalCard";
+import Lawyer from "../Components/Lawyer";
+import LawyerList from "../Components/LawyerList";
+
 
 export default function TalkToLawyer() {
+  const [lawyers, setLawyers] = useState([]);
+
+  useEffect(() => {
+    // Fetch legal service providers data from your backend API
+    fetch("http://localhost:5000/api/v1/legal-service-providers")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setLawyers(data); // Update state with the fetched data
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []); // This useEffect runs once when the component mounts
+
+
   return (
     <>
       <FlexRow vrAlign="flex-start">
@@ -109,10 +123,10 @@ export default function TalkToLawyer() {
           <Leaderboard />
         </FlexColumn>
       </FlexRow>
-      <FlexRow hrAlign="flex-start" vrAlign="flex-start" padding="2rem">
-        {lawyersProfile.map((lawyer) => (
-          <ProfileCard key={lawyer._id} lawyer={lawyer} />
-        ))}
+      <FlexRow hrAlign="flex-start" vrAlign="flex-start" padding="2rem" overFlow="scroll">
+        <LawyerList
+          filteredLawyers={lawyers}
+        />
       </FlexRow>
 
       <ProfileHorizontalCard />

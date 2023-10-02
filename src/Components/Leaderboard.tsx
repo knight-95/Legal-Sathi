@@ -9,7 +9,7 @@ const candidates = [
     {
         id: 1,
         name: 'John Doe',
-        specialization: [
+        specializations: [
             'Cyber Crime', 'Family Issues', 'Criminal'
         ],
         score: 95,
@@ -20,7 +20,7 @@ const candidates = [
     {
         id: 2,
         name: 'Dawid',
-        specialization: [
+        specializations: [
             'Cyber Crime', 'Criminal',
         ],
         score: 35,
@@ -31,7 +31,7 @@ const candidates = [
     {
         id: 3,
         name: 'Michale',
-        specialization: [
+        specializations: [
             'Cyber Crime',
         ],
         score: 85,
@@ -42,7 +42,7 @@ const candidates = [
     {
         id: 4,
         name: 'Green',
-        specialization: [
+        specializations: [
             'Cyber Crime', 'Property Disputes'
         ],
         score: 115,
@@ -53,7 +53,7 @@ const candidates = [
     {
         id: 5,
         name: 'Smith',
-        specialization: [
+        specializations: [
             'Cyber Crime'
         ],
         score: 55,
@@ -108,9 +108,9 @@ const Leaderboard = () => {
                                 </Link>
                             </Td>
                             <Td>
-                                {candidate.specialization.map((specialization, index) => (
+                                {candidate.specializations.map((specializations, index) => (
                                     <Tag key={index} margin="0.2rem" background="#a0d4eb" fontSize="0.7rem" style={{ cursor: 'pointer' }}>
-                                        {specialization}
+                                        {specializations}
                                     </Tag>
                                 ))}
                             </Td>
@@ -131,3 +131,5 @@ const Leaderboard = () => {
 };
 
 export default Leaderboard;
+
+
