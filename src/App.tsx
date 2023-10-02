@@ -13,6 +13,8 @@ import LawyersProfile from "./Pages/LawyersProfile";
 import StateCityDropdown from "./Components/SearchFilter";
 import RatingAndReviewCard from "./Components/Cards/RatingAndReviewCard";
 import AdminDashboard from "./Pages/AdminDashboard";
+import ApproveReject from "./Components/AdminPage/ApproveReject";
+import MultiStepRegistration from "./Pages/RegistrationForm";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -27,6 +29,7 @@ export const App = () => (
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
         <Route path="/lawyersprofile" element={<LawyersProfile />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/approve-reject/:id" element={<ApproveReject />} />
       </Routes>
 
       {/* <RatingAndReviewCard
