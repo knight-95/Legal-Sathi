@@ -109,7 +109,7 @@ export default function TalkToLawyer() {
           <Leaderboard />
         </FlexColumn>
       </FlexRow>
-      <FlexRow hrAlign="flex-start" padding="2rem">
+      <FlexRow hrAlign="flex-start" vrAlign="flex-start" padding="2rem">
         {lawyersProfile.map((lawyer) => (
           <ProfileCard key={lawyer._id} lawyer={lawyer} />
         ))}
