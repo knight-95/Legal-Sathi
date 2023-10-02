@@ -10,10 +10,8 @@ import Footer from "./Components/Footer";
 import Leaderboard from "./Components/Leaderboard";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
-import StateCityDropdown from "./Components/SearchFilter";
 import AdminDashboard from "./Pages/AdminDashboard";
 import ApproveReject from "./Components/AdminPage/ApproveReject";
-import MultiStepRegistration from "./Pages/RegistrationForm";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
