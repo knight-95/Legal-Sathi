@@ -256,6 +256,7 @@ export default function RegistrationForm() {
                     message: "Minimum length should be 10",
                   },
                 })}
+                
                 size="sm"
               />
               <FormErrorMessage>

@@ -12,6 +12,7 @@ import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
 import StateCityDropdown from "./Components/SearchFilter";
 import AdminDashboard from "./Pages/AdminDashboard";
+import MultiStepRegistration from "./Pages/MultiStepRegistration";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -26,6 +27,7 @@ export const App = () => (
         <Route path="/talktolawyer" element={<TalkToLawyer />} />
         <Route path="/lawyersprofile" element={<LawyersProfile />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
+        <Route path="/multi" element={<MultiStepRegistration />} />
       </Routes>
       <Footer />
     </Router>
