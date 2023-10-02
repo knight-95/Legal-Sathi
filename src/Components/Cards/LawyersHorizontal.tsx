@@ -15,6 +15,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { AiFillStar, AiOutlineMessage } from "react-icons/ai";
 import { GoBriefcase } from "react-icons/go";
 import { GrLocation } from "react-icons/gr";
+import { style } from "../../styles/StyledConstants";
 
 const LawyersHorizontal = () => {
   return (
@@ -28,9 +29,11 @@ const LawyersHorizontal = () => {
                 height="6rem"
                 width="6rem"
               />
-              <Box>
-                <Text>Name</Text>
-                <Text>Available</Text>
+              <Box marginLeft={style.margin.sm}>
+                <Text fontSize={style.font.h3} m={0}>
+                  Name
+                </Text>
+                <Text m={0}>Available</Text>
                 {/* {categories.map((category, index) => (
                   <Tag margin="0.2rem" key={index}>
                     {category}
