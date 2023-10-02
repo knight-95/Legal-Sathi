@@ -5,6 +5,8 @@ import FlexRow from "../_ui/flex/FlexRow";
 import { style } from "../styles/StyledConstants";
 import ApproveReject from "../Components/AdminPage/ApproveReject";
 import Login from "./Login";
+import ApprovalRequestsTable from "../Components/ApprovalRequestTable";
+import Test from "../Components/Test";
 
 function AdminDashboard() {
   const [selectedComponent, setSelectedComponent] = useState<ReactNode | null>(
@@ -16,7 +18,7 @@ function AdminDashboard() {
         <Button
           width="full"
           borderBottom="1px solid"
-          onClick={() => setSelectedComponent(<ApproveReject />)}
+          onClick={() => setSelectedComponent(<ApprovalRequestsTable/>)}
         >
           Profile Verification
         </Button>

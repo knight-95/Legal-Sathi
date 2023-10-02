@@ -19,6 +19,9 @@ import { GrLocation } from "react-icons/gr";
 import FlexColumn from "../../_ui/flex/FlexColumn";
 import FlexRow from "../../_ui/flex/FlexRow";
 import { style } from "../../styles/StyledConstants";
+import { useState } from "react";
+import { HuddleIframe } from "@huddle01/iframe";
+
 
 interface ProfileCardProps {
   lawyer: {
@@ -37,6 +40,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
   const { name, location, experience, languages, categories, src, rating } =
     lawyer;
 
+    const [video,onVideo] = useState(false);
+    const handleClick = ()=>{
+      onVideo(true);
+    }
   return (
     <Box boxShadow="2xl" rounded="lg" p={5} width="25rem" marginRight="1.25rem">
       <FlexRow vrAlign="flex-start">
@@ -109,12 +116,16 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
             <FiPhoneCall />
             <Text marginLeft="0.5rem">Call Now</Text>
           </Button>
-          <Button colorScheme="green" variant="outline">
+          <Button colorScheme="green" variant="outline" onClick={handleClick}>
             <FcVideoCall />
             <Text marginLeft="0.5rem">Video Call</Text>
           </Button>
         </Stack>
+
       </Flex>
+      {video && <Box>
+        video box
+        <HuddleIframe roomUrl="https://iframe.huddle01.com/yph-beva-xzo" className="w-full aspect-video" /></Box>}
     </Box>
   );
 };

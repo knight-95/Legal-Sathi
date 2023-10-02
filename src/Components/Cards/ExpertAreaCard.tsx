@@ -48,7 +48,7 @@ export default function ExpertAreaCard({
     try {
       // Make an API request to fetch lawyers by specialization
       console.log("i am here  ")
-      const url = `/api/v1/lawyers/${specializations}`;
+      const url = `http://localhost:5000/api/v1/lawyers/${specializations}`;
       const response = await fetch(url);
       
       if (response.ok) {
@@ -65,6 +65,7 @@ export default function ExpertAreaCard({
     }
   };
   return (
+    <>
     <Center py={6}>
       <Box
         // maxW={'270px'}
@@ -98,17 +99,18 @@ export default function ExpertAreaCard({
             <Text>Consult Now </Text>
           </Button>
         </Box>
-        {loading ? (
-          <Loader size="3rem" />
-        ) : (
-          <FlexRow marginTop="1rem">
-            <LawyerList
-              firstRender={firstRender}
-              filteredLawyers={filteredLawyers}
-            />
-          </FlexRow>
-        )}
       </Box>
     </Center>
+    {/* {loading ? (
+      <Loader size="3rem" />
+    ) : (
+      <FlexRow marginTop="1rem">
+        <LawyerList
+          firstRender={firstRender}
+          filteredLawyers={filteredLawyers}
+        />
+      </FlexRow>
+    )} */}
+  </>
   );
 }

@@ -35,11 +35,11 @@ interface FormValues {
   gender: string;
   barCouncilFile: File;
   specializations: string[];
-  photo: File;
+  image: File | any;
   description: string;
   experience: number;
   aadhar: string;
-  errors:any;
+  errors: any;
 }
 
 export default function RegistrationForm() {
@@ -221,7 +221,7 @@ export default function RegistrationForm() {
                 size="sm"
               />
               <FormErrorMessage>
-                {errors["state"] && errors["state"].message}
+                {errors["experience"] && errors["experience"].message}
               </FormErrorMessage>
             </FormControl>
 
@@ -240,7 +240,7 @@ export default function RegistrationForm() {
                 size="sm"
               />
               <FormErrorMessage>
-                {errors["state"] && errors["state"].message}
+                {errors["aadhar"] && errors["aadhar"].message}
               </FormErrorMessage>
             </FormControl>
 
@@ -306,11 +306,11 @@ export default function RegistrationForm() {
             </FormControl>
 
             <FormControl isRequired>
-              <FormLabel>Photo</FormLabel>
+              <FormLabel>image</FormLabel>
               <Input type="file" accept="*" />
-              <FormErrorMessage>
-                {errors["photo"] && errors["photo"].message}
-              </FormErrorMessage>
+              {errors["image"]?.message && (
+                <FormErrorMessage>{errors["image"].message.toString()}</FormErrorMessage>
+              )}
             </FormControl>
           </FlexColumn>
         </FlexRow>
