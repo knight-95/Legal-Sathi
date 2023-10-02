@@ -1,9 +1,9 @@
 import { Box, Button, Center, Text, useColorModeValue } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import FlexColumn from "../../_ui/flex/FlexColumn";
-import FlexRow from "../../_ui/flex/FlexRow";
-import { style } from "../../styles/StyledConstants";
+import FlexColumn from "../../../_ui/flex/FlexColumn";
+import FlexRow from "../../../_ui/flex/FlexRow";
+import { style } from "../../../styles/StyledConstants";
 
 type Props = {
   _id?: string;

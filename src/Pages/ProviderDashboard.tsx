@@ -22,7 +22,7 @@ function AdminDashboard() {
         <Button
           width="full"
           borderBottom="1px solid"
-          onClick={() => setSelectedComponent(<ApprovalRequestsTable />)}
+        //   onClick={() => setSelectedComponent(<ApprovalRequestsTable />)}
         >
           Home
         </Button>
@@ -39,6 +39,13 @@ function AdminDashboard() {
           onClick={() => setSelectedComponent(<Login />)}
         >
           Appointments
+        </Button>
+        <Button
+          width="full"
+          borderBottom="1px solid"
+          onClick={() => setSelectedComponent(<Login />)}
+        >
+          Earnings
         </Button>
       </FlexColumn>
       <FlexColumn width="80%" vrAlign="flex-start" hrAlign="flex-start">

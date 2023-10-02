@@ -11,7 +11,7 @@ import Leaderboard from "./Components/Leaderboard";
 import TalkToLawyer from "./Pages/TalkToLawyer";
 import LawyersProfile from "./Pages/LawyersProfile";
 import AdminDashboard from "./Pages/AdminDashboard";
-import ApproveReject from "./Components/AdminPage/ApproveReject";
+import ApproveReject from "./Components/Dashboard/AdminPage/ApproveReject";
 
 export const App = () => (
   <ChakraProvider theme={theme}>

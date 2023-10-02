@@ -3,9 +3,9 @@ import React, { ReactNode, useEffect, useState } from "react";
 import FlexColumn from "../_ui/flex/FlexColumn";
 import FlexRow from "../_ui/flex/FlexRow";
 import { style } from "../styles/StyledConstants";
-import ApproveReject from "../Components/AdminPage/ApproveReject";
+import ApproveReject from "../Components/Dashboard/AdminPage/ApproveReject";
 import Login from "./Login";
-import ApprovalRequestsTable from "../Components/AdminPage/ApprovalRequestTable";
+import ApprovalRequestsTable from "../Components/Dashboard/AdminPage/ApprovalRequestTable";
 import Test from "../Components/Test";
 
 function AdminDashboard() {
