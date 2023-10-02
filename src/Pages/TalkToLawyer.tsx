@@ -28,7 +28,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import ProfileCards from "../Components/Cards/ProfileCard";
 import ProfileCard from "../Components/Cards/ProfileCard";
 import lawyersProfile from "../data/lawyersProfile";
-import LawyersHorizontal from "../Components/Cards/LawyersHorizontal";
+import ProfileHorizontalCard from "../Components/Cards/ProfileHorizontalCard";
 
 export default function TalkToLawyer() {
   return (
@@ -115,7 +115,7 @@ export default function TalkToLawyer() {
         ))}
       </FlexRow>
 
-          <LawyersHorizontal/>
+      <ProfileHorizontalCard />
     </>
   );
 }

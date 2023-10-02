@@ -1,12 +1,9 @@
-import { Box, Button, Text, useColorModeValue } from "@chakra-ui/react";
-import React, { ReactNode, useEffect, useState } from "react";
+import { Box, Button, Image, Text } from "@chakra-ui/react";
+import React, { ReactNode, useState } from "react";
 import FlexColumn from "../_ui/flex/FlexColumn";
 import FlexRow from "../_ui/flex/FlexRow";
 import { style } from "../styles/StyledConstants";
-import ApproveReject from "../Components/AdminPage/ApproveReject";
 import Login from "./Login";
-import ApprovalRequestsTable from "../Components/AdminPage/ApprovalRequestTable";
-import Test from "../Components/Test";
 
 function AdminDashboard() {
   const [selectedComponent, setSelectedComponent] = useState<ReactNode | null>(
@@ -15,19 +12,33 @@ function AdminDashboard() {
   return (
     <FlexRow>
       <FlexColumn width="20%" vrAlign="flex-start" hrAlign="flex-start">
+        <FlexRow>
+          <Image />
+          <Box>
+            <Text m={0}>Yash Gupta</Text>
+            <Text m={0}>yashgupta@gmail.com</Text>
+          </Box>
+        </FlexRow>
         <Button
           width="full"
           borderBottom="1px solid"
           onClick={() => setSelectedComponent(<ApprovalRequestsTable />)}
         >
-          Profile Verification
+          Home
         </Button>
         <Button
           width="full"
           borderBottom="1px solid"
           onClick={() => setSelectedComponent(<Login />)}
         >
-          Show Component B
+          Clients
+        </Button>
+        <Button
+          width="full"
+          borderBottom="1px solid"
+          onClick={() => setSelectedComponent(<Login />)}
+        >
+          Appointments
         </Button>
       </FlexColumn>
       <FlexColumn width="80%" vrAlign="flex-start" hrAlign="flex-start">
