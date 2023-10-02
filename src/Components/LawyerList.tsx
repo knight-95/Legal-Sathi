@@ -7,7 +7,7 @@ import FlexRow from "../_ui/flex/FlexRow";
 
 interface Props {
     filteredLawyers: Lawyer[]; // Type filteredLawyers as an array of Lawyer objects
-    firstRender:boolean;
+    firstRender?:boolean;
 }
 
 function LawyerList({ filteredLawyers, firstRender }: Props) {

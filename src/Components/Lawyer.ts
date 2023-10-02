@@ -10,6 +10,8 @@ interface Lawyer {
     languages: string[];
     specializations: string[];
     description: string;
+    categories: string[];
+    src?: string;
   }
 
 // interface Lawyer{

@@ -26,10 +26,12 @@ import { HuddleIframe } from "@huddle01/iframe";
 interface ProfileCardProps {
   lawyer: {
     _id: string;
-    name: string;
+    firstName: string;
+    lastName: string;
     rating: string;
-    src: string;
-    location: string;
+    src?: string;
+    city: string;
+    state: string;
     experience: string;
     languages: string[];
     categories: string[];
@@ -37,7 +39,7 @@ interface ProfileCardProps {
 }
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
-  const { name, location, experience, languages, categories, src, rating } =
+  const { firstName, lastName, city, state, experience, languages, categories, src, rating } =
     lawyer;
 
     const [video,onVideo] = useState(false);
@@ -49,7 +51,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
       <FlexRow vrAlign="flex-start">
         <FlexColumn vrAlign="flex-start">
           <Box width="15rem">
-            <Heading size="lg">{name}</Heading>
+            <Heading size="lg">{firstName} {lastName}</Heading>
             <Text color="green" fontSize={style.font.h5}>Available</Text>
           </Box>
           <Flex
@@ -76,7 +78,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ lawyer }) => {
       <Box marginTop="2rem">
         <Flex alignItems="center">
           <GrLocation />
-          <Text marginLeft="0.5rem">{location}</Text>
+          <Text marginLeft="0.5rem">{city}, {state}</Text>
         </Flex>
         <Flex alignItems="center">
           <GoBriefcase />
