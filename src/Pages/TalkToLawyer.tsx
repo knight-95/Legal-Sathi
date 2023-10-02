@@ -23,10 +23,7 @@ import { style } from "../styles/StyledConstants";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMdPeople } from "react-icons/io";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import ProfileCard from "../Components/Cards/ProfileCard";
-import Lawyer from "../Components/Lawyer";
 import LawyerList from "../Components/LawyerList";
-
 
 export default function TalkToLawyer() {
   const [lawyers, setLawyers] = useState([]);
@@ -36,14 +33,13 @@ export default function TalkToLawyer() {
     fetch("http://localhost:5000/api/v1/legal-service-providers")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setLawyers(data); // Update state with the fetched data
       })
       .catch((error) => {
         console.error(error);
       });
   }, []); // This useEffect runs once when the component mounts
-
 
   return (
     <>
@@ -123,13 +119,14 @@ export default function TalkToLawyer() {
           <Leaderboard />
         </FlexColumn>
       </FlexRow>
-      <FlexRow hrAlign="flex-start" vrAlign="flex-start" padding="2rem" overFlow="scroll">
-        <LawyerList
-          filteredLawyers={lawyers}
-        />
+      <FlexRow
+        hrAlign="flex-start"
+        vrAlign="flex-start"
+        padding="2rem"
+        overFlow="scroll"
+      >
+        <LawyerList filteredLawyers={lawyers} />
       </FlexRow>
-
-      <ProfileHorizontalCard />
     </>
   );
 }
