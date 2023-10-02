@@ -14,6 +14,7 @@ import StateCityDropdown from "./Components/SearchFilter";
 import RatingAndReviewCard from "./Components/Cards/RatingAndReviewCard";
 import AdminDashboard from "./Pages/AdminDashboard";
 import ApproveReject from "./Components/AdminPage/ApproveReject";
+import MultiStepRegistration from "./Pages/RegistrationForm";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
