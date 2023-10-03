@@ -4,7 +4,7 @@ const Assistant = () => {
   return (
     <Box
       id="askDishaLuncher"
-    //   draggable="true"
+      draggable="true"
 
       bg="transparent"
       w="120px"
@@ -21,7 +21,8 @@ const Assistant = () => {
       minW="120px"
     >
       <img
-        src="https://sdk.irctc.corover.ai/askdisha-bucket/launcher.gif"
+        // src="https://sdk.irctc.corover.ai/askdisha-bucket/launcher.gif"
+        src="https://indoanalytica.com/static/images/chat-bot-1.gif"
         alt="Launcher"
         style={{ width: '100%' }}
       />

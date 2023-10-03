@@ -32,7 +32,7 @@ const stateCityData: StateCityData = {
   "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur"],
   Maharastra: ["Pune", "Mumbai", "Nagpur"],
   Delhi: ["Delhi"],
-  Gujarat:["Ahemdabad", "Surat", "Vadodra"]
+  Gujarat: ["Ahemdabad", "Surat", "Vadodra"],
   // Add more states and cities as needed
 };
 
@@ -66,7 +66,7 @@ function SearchFilter() {
     "Personal Injury",
     "Corporate",
     "Cyber Crime",
-    "Property"
+    "Property",
     // Add more practice areas as needed
   ];
 
@@ -224,7 +224,15 @@ function SearchFilter() {
         </FormControl>
       </FlexRow>
       <FlexRow>
-        <Button colorScheme="blue" onClick={handleCombinedClick} marginTop="2rem" marginBottom="1rem">
+        <Button
+          background={
+            "linear-gradient(100.07deg, #2A85FF 0.39%, #2448C7 73.45%)"
+          }
+          onClick={handleCombinedClick}
+          marginTop="2rem"
+          marginBottom="1rem"
+          color="white"
+        >
           {loading ? <Spinner size="sm" color="white" /> : "Submit"}
         </Button>
       </FlexRow>

@@ -87,7 +87,9 @@ export default function ExpertAreaCard({
 
           <Button
             w={"full"}
-            bg={useColorModeValue("#4c50e0", "#4c50e0")}
+            background={
+              "linear-gradient(100.07deg, #2A85FF 0.39%, #2448C7 73.45%)"
+            }
             color={"white"}
             rounded={"xl"}
             _hover={{

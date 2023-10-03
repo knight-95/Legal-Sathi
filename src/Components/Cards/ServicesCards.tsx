@@ -9,7 +9,11 @@ import {
   useColorModeValue,
   Image,
   Flex,
+  TagCloseButton,
 } from "@chakra-ui/react";
+import TagNative from "../../_ui/tag/TagNative";
+import FlexColumn from "../../_ui/flex/FlexColumn";
+import { style } from "../../styles/StyledConstants";
 
 type Props = {
   index?: string;
@@ -21,6 +25,7 @@ type Props = {
   height?: string;
   headingFontSize?: string;
   descriptionFontSize?: string;
+  tags?: any;
 };
 
 export default function ServicesCards({
@@ -28,6 +33,7 @@ export default function ServicesCards({
   index,
   title,
   description,
+  tags,
   headingFontSize,
   descriptionFontSize,
   onClick,
@@ -39,7 +45,7 @@ export default function ServicesCards({
       <Box
         maxW={"20rem"}
         w={"full"}
-        height="25rem"
+        height="40rem"
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"lg"}
@@ -72,22 +78,32 @@ export default function ServicesCards({
             fontSize={"2xl"}
             fontFamily={"body"}
             marginTop="1rem"
+            height="5rem"
           >
             {title}
           </Heading>
-          <Text color={"gray.500"} marginTop="1rem">
-            {description}
-          </Text>
+          <Box height="10rem">
+            <Text color={"gray.500"} marginTop="1rem">
+              {description}
+            </Text>
+          </Box>
         </Stack>
-        <Stack direction={"row"} spacing={4} align={"center"}>
-          <Avatar
-            src={"https://avatars0.githubusercontent.com/u/1164541?v=4"}
-          />
-          <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-            <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={"gray.500"}>Feb 08, 2021 · 6min read</Text>
-          </Stack>
-        </Stack>
+
+        <FlexColumn hrAlign="flex-start" vrAlign="space-between">
+          {tags.map((tag: any, index: any) => (
+            <span key={index}>
+              <TagNative
+                marginTop={style.margin.xxs}
+                icon={{
+                  align: "left",
+                }}
+                size="md"
+                value={tag}
+                lineHeight="1.5rem"
+              />
+            </span>
+          ))}
+        </FlexColumn>
       </Box>
     </Center>
   );

@@ -1,4 +1,12 @@
-import { Box, Button, Divider, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import FlexRow from "../_ui/flex/FlexRow";
 import FlexColumn from "../_ui/flex/FlexColumn";
 import { style } from "../styles/StyledConstants";

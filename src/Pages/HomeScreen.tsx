@@ -31,6 +31,7 @@ const HomeScreen = () => {
             index={val._id}
             title={val.title}
             description={val.description}
+            tags={val.tags}
           />
         ))}
       </FlexRow>
