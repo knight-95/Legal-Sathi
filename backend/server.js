@@ -8,10 +8,13 @@ require("dotenv").config();
 port = process.env.PORT 
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
-const legalServiceProviderRoutes = require('./routes/legalServiceProvider')
+const legalServiceProviderRoutes = require('./routes/legalServiceProvider');
+const fileUpload = require("express-fileupload");
+const { cloudinaryConnect } = require("./config/cloudinary");
 
 
 const app = express();
+app.use(express.json())
 
 mongoose.connect('mongodb://127.0.0.1/LegalSathi', {
   useNewUrlParser: true,
@@ -19,6 +22,15 @@ mongoose.connect('mongodb://127.0.0.1/LegalSathi', {
 });
 
 const db = mongoose.connection;
+
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp",
+  })
+);
+
+cloudinaryConnect()
 
 db.on('error', (error) => {
   console.error('MongoDB connection error:', error);
@@ -34,11 +46,6 @@ app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
 
-// app.get("/api/v1", (req, res) => {
-//     res.json({
-//       data: "hey you hit node API",
-//     });
-//   });
 
 
 // Use the authentication routes

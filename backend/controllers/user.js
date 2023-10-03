@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const LegalServiceProvider = require('../models/legalServiceProvider'); 
 const jwt = require('jsonwebtoken');
+const {uploaderImageToCloudinary } = require('../config/cloudinary');
 
 
 // Handle POST request to /api/signup
@@ -80,6 +81,7 @@ exports.loginController = async (req, res) => {
 //registration Controller
 exports.registrationController = async (req, res) => {
     try {
+        console.log("hello")
         // Extract data from the request body
         const {
             firstName,
@@ -89,14 +91,18 @@ exports.registrationController = async (req, res) => {
             city,
             state,
             barCouncilId,
-            image,
+            
             rating,
-            aadhar,
+            
             gender,
             languages,
             specializations,
             experience,
         } = req.body;
+
+        const imagefile = req.files.sendimage ;
+        const aadharfile = req.files.sendaadhar ;
+        // const barCertificatefile = req.files.barCouncilcertificate ;
 
         // Check if the email is already registered
         const existingLSP = await LegalServiceProvider.findOne({ email });
@@ -106,8 +112,13 @@ exports.registrationController = async (req, res) => {
 
         // Hash the password
         const salt = await bcrypt.genSalt(10);
+        // const bcrypt = require('bcryptjs');
         const hashedPassword = await bcrypt.hash(password, salt);
-
+        console.log("hello")
+        const imageurl = await uploaderImageToCloudinary(imagefile , process.env.FOLDER_NAME)
+        const aadharurl = await uploaderImageToCloudinary(aadharfile ,process.env.FOLDER_NAME)
+        // const barCertificateurl = await uploadImageToCloudinary(barCertificatefile , "cloud ke folder ka naam")
+  console.log("image url ==> " , imageurl)
         // Create a new user document
         const newLSP = new LegalServiceProvider({
             firstName,
@@ -122,10 +133,12 @@ exports.registrationController = async (req, res) => {
             specializations,
             rating,
             experience,
-            image,
+            image : imageurl.secure_url,
             rating,
-            aadhar,
+            aadhar : aadharurl.secure_url,
         });
+
+        console.log("okay")
 
         // Save the user to the database
         await newLSP.save();
@@ -133,7 +146,7 @@ exports.registrationController = async (req, res) => {
         res.status(201).json({ message: 'Registration successful.' });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
+        res.status(500).json({ message: error.message });
     }
 };
 
